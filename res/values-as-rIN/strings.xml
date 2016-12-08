@@ -76,6 +76,7 @@
   <!-- Message of dialog shown to user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=none] -->
   <!-- Label for button in confirmation dialog when the user clicks on emergency information [CHAR LIMIT=15] -->
   <!-- Message shown when no emergency information has been provided by the user [CHAR LIMIT=NONE] -->
+  <!-- Extra message to indicate to the user that they can add emergency information [CHAR LIMIT=NONE] -->
   <!-- Label for action item on the menu of the editing screen [CHAR LIMIT=15] -->
   <!-- Label for button of dialog shown to clear all information and contacts [CHAR LIMIT=15] -->
   <!-- Message of dialog shown to clear all information and contacts [CHAR LIMIT=NONE] -->
