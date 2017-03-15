@@ -16,6 +16,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- The name of the app. [CHAR_LIMIT=30] -->
+  <string name="app_label">Información d\'emerxencia</string>
   <!-- The description of the pencil icon, for talkback. [CHAR_LIMIT=NONE] -->
   <!-- The title of the emergency info tab. [CHAR_LIMIT=15] -->
   <!-- The title of the emergency contacts tab. [CHAR_LIMIT=15] -->
@@ -39,8 +40,53 @@
   <!-- Blood type AB+. [CHAR_LIMIT=10] -->
   <!-- Blood type AB-. [CHAR_LIMIT=10] -->
   <!-- Blood type H/H. [CHAR_LIMIT=10] -->
+  <string-array name="blood_type_entries">
+    <item>@string/oplus</item>
+    <item>@string/ominus</item>
+    <item>@string/aplus</item>
+    <item>@string/aminus</item>
+    <item>@string/bplus</item>
+    <item>@string/bminus</item>
+    <item>@string/abplus</item>
+    <item>@string/abminus</item>
+    <item>@string/hh</item>
+    <item>@string/unknown_blood_type</item>
+  </string-array>
   <!-- Blood type values. Do not translate -->
+  <string-array name="blood_type_values">
+    <!-- Do not translate -->
+    <item>0+</item>
+    <!-- Do not translate -->
+    <item>O-</item>
+    <!-- Do not translate -->
+    <item>A+</item>
+    <!-- Do not translate -->
+    <item>A-</item>
+    <!-- Do not translate -->
+    <item>B+</item>
+    <!-- Do not translate -->
+    <item>B-</item>
+    <!-- Do not translate -->
+    <item>AB+</item>
+    <!-- Do not translate -->
+    <item>AB-</item>
+    <!-- Do not translate -->
+    <item>H/H</item>
+    <item></item>
+  </string-array>
   <!-- Content descriptions for the blood types, used for talkback. -->
+  <string-array name="blood_type_content_description">
+    <item>@string/o_positive</item>
+    <item>@string/o_negative</item>
+    <item>@string/a_positive</item>
+    <item>@string/a_negative</item>
+    <item>@string/b_positive</item>
+    <item>@string/b_negative</item>
+    <item>@string/ab_positive</item>
+    <item>@string/ab_negative</item>
+    <item>@string/h_h</item>
+    <item>@string/unknown_blood_type</item>
+  </string-array>
   <!-- Content descriptions for blood type O+, used for talkback. [CHAR_LIMIT=NONE] -->
   <!-- Content descriptions for blood type O-, used for talkback. [CHAR_LIMIT=NONE] -->
   <!-- Content descriptions for blood type A+, used for talkback. [CHAR_LIMIT=NONE] -->
@@ -63,6 +109,11 @@
   <!-- The default preference subtitle text to show when the organ donor choice is unknown. [CHAR_LIMIT=40] -->
   <!-- Affirmative. [CHAR_LIMIT=10] -->
   <!-- Negative. [CHAR_LIMIT=10] -->
+  <string-array name="organ_donor_entries">
+    <item>@string/yes</item>
+    <item>@string/no</item>
+    <item>@string/unknown_organ_donor</item>
+  </string-array>
   <!-- Organ donor values. Do not translate -->
   <!-- The title of the emergency contacts preference. [CHAR_LIMIT=40] -->
   <!-- The title of the add emergency contacts preference. [CHAR_LIMIT=40] -->
@@ -70,6 +121,7 @@
   <!-- The description of the remove an emergency contact, for talkback. [CHAR_LIMIT=NONE] -->
   <!-- Button text for removing a contact. [CHAR_LIMIT=15] -->
   <!-- Button text for canceling an operation. [CHAR_LIMIT=15] -->
+  <string name="cancel">Encaboxar</string>
   <!-- Button text for accepting an operation. [CHAR_LIMIT=15] -->
   <!-- Subtitle for an emergency contact. [CHAR_LIMIT=NONE] -->
   <!-- Title of dialog shown to the user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=30] -->
