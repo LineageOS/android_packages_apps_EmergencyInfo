@@ -120,12 +120,14 @@
   <!-- The message of the dialog shown when removing a contact. [CHAR_LIMIT=140] -->
   <!-- The description of the remove an emergency contact, for talkback. [CHAR_LIMIT=NONE] -->
   <!-- Button text for removing a contact. [CHAR_LIMIT=15] -->
+  <string name="remove">Desaniciar</string>
   <!-- Button text for canceling an operation. [CHAR_LIMIT=15] -->
   <string name="cancel">Encaboxar</string>
   <!-- Button text for accepting an operation. [CHAR_LIMIT=15] -->
   <!-- Subtitle for an emergency contact. [CHAR_LIMIT=NONE] -->
   <!-- Title of dialog shown to the user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=30] -->
   <!-- Message of dialog shown to user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=none] -->
+  <string name="user_emergency_info_consent">La información qu\'introduzas equí ayudará a los auxiliares nuna emerxencia. Namái s\'atroxa nel to preséu y naide pue lleela dende\'l marcador d\'emerxencia ensin desbloquiar el teléfonu.</string>
   <!-- Label for button in confirmation dialog when the user clicks on emergency information [CHAR LIMIT=15] -->
   <!-- Message shown when no emergency information has been provided by the user [CHAR LIMIT=NONE] -->
   <!-- Extra message to indicate to the user that they can add emergency information [CHAR LIMIT=NONE] -->
