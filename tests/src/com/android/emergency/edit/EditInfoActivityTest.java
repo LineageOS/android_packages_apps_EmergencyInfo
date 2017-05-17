@@ -15,13 +15,24 @@
  */
 package com.android.emergency.edit;
 
+import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth.assertWithMessage;
+
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
+import android.app.Instrumentation;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.PowerManager;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.LargeTest;
 import android.util.Pair;
@@ -42,9 +53,8 @@ import java.util.List;
  */
 @LargeTest
 public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditInfoActivity> {
-    private ArrayList<Pair<String, Fragment>> mFragments;
-    private EditEmergencyInfoFragment mEditEmergencyInfoFragment;
-    private EditEmergencyContactsFragment mEditEmergencyContactsFragment;
+    private EditInfoFragment mFragment;
+    private PreferenceGroup mMedicalInfoParent;
     private PowerManager.WakeLock mKeepScreenOnWakeLock;
 
     public EditInfoActivityTest() {
@@ -57,9 +67,8 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
         forceScreenOn();
 
-        mFragments = getActivity().getFragments();
-        mEditEmergencyInfoFragment = (EditEmergencyInfoFragment) mFragments.get(0).second;
-        mEditEmergencyContactsFragment = (EditEmergencyContactsFragment) mFragments.get(1).second;
+        mFragment = (EditInfoFragment) getActivity().getFragment();
+        mMedicalInfoParent = mFragment.getMedicalInfoParent();
     }
 
     @Override
@@ -69,50 +78,47 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         super.tearDown();
     }
 
-    public void testTwoFragments() {
-        assertEquals(2, mFragments.size());
-    }
-
     public void testInitialState() {
+        // Because the initial state of each preference is empty, the edit activity removes the
+        // preference. As a result, we expect them all to be null.
         for (String key : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
-            assertNotNull(mEditEmergencyInfoFragment.findPreference(key));
+            assertWithMessage(key).that(mMedicalInfoParent.findPreference(key)).isNull();
         }
         EmergencyContactsPreference emergencyContactsPreference =
-                (EmergencyContactsPreference) mEditEmergencyContactsFragment
-                        .findPreference(PreferenceKeys.KEY_EMERGENCY_CONTACTS);
-        assertNotNull(emergencyContactsPreference);
-        assertEquals(0, emergencyContactsPreference.getPreferenceCount());
+                (EmergencyContactsPreference) mFragment.findPreference(
+                        PreferenceKeys.KEY_EMERGENCY_CONTACTS);
+        assertThat(emergencyContactsPreference).isNotNull();
+        assertThat(emergencyContactsPreference.getPreferenceCount()).isEqualTo(0);
     }
 
     public void testClearAllPreferences () throws Throwable {
-        EditInfoActivity editInfoActivity = getActivity();
         final NameAutoCompletePreference namePreference =
-                (NameAutoCompletePreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_NAME);
+                (NameAutoCompletePreference) mFragment.getMedicalInfoPreference(
+                        PreferenceKeys.KEY_NAME);
         final EmergencyEditTextPreference addressPreference =
-                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_ADDRESS);
+                (EmergencyEditTextPreference) mFragment.getMedicalInfoPreference(
+                        PreferenceKeys.KEY_ADDRESS);
         final EmergencyListPreference bloodTypePreference =
-                (EmergencyListPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_BLOOD_TYPE);
+                (EmergencyListPreference) mFragment.getMedicalInfoPreference(
+                        PreferenceKeys.KEY_BLOOD_TYPE);
         final EmergencyEditTextPreference allergiesPreference =
-                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_ALLERGIES);
+                (EmergencyEditTextPreference) mFragment.getMedicalInfoPreference(
+                        PreferenceKeys.KEY_ALLERGIES);
         final EmergencyEditTextPreference medicationsPreference =
-                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_MEDICATIONS);
+                (EmergencyEditTextPreference) mFragment.getMedicalInfoPreference(
+                        PreferenceKeys.KEY_MEDICATIONS);
         final EmergencyEditTextPreference medicalConditionsPreference =
-                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_MEDICAL_CONDITIONS);
+                (EmergencyEditTextPreference) mFragment.getMedicalInfoPreference(
+                        PreferenceKeys.KEY_MEDICAL_CONDITIONS);
         final EmergencyListPreference organDonorPreference =
-                (EmergencyListPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_ORGAN_DONOR);
+                (EmergencyListPreference) mFragment.getMedicalInfoPreference(
+                        PreferenceKeys.KEY_ORGAN_DONOR);
 
         final EmergencyContactsPreference emergencyContactsPreference =
-                (EmergencyContactsPreference) mEditEmergencyContactsFragment
+                (EmergencyContactsPreference) mFragment
                         .findPreference(PreferenceKeys.KEY_EMERGENCY_CONTACTS);
         final Uri contactUri = ContactTestUtils
-                .createContact(editInfoActivity.getContentResolver(), "Michael", "789");
+                .createContact(getActivity().getContentResolver(), "Michael", "789");
         final List<Uri> emergencyContacts = new ArrayList<>();
         emergencyContacts.add(contactUri);
 
@@ -130,41 +136,46 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
             }
         });
 
-        String unknownName = editInfoActivity.getResources().getString(R.string.unknown_name);
-        String unknownAddress = editInfoActivity.getResources().getString(R.string.unknown_address);
+        String unknownName = getActivity().getResources().getString(R.string.unknown_name);
+        String unknownAddress = getActivity().getResources().getString(R.string.unknown_address);
         String unknownBloodType =
-                editInfoActivity.getResources().getString(R.string.unknown_blood_type);
+                getActivity().getResources().getString(R.string.unknown_blood_type);
         String unknownAllergies =
-                editInfoActivity.getResources().getString(R.string.unknown_allergies);
+                getActivity().getResources().getString(R.string.unknown_allergies);
         String unknownMedications =
-                editInfoActivity.getResources().getString(R.string.unknown_medications);
+                getActivity().getResources().getString(R.string.unknown_medications);
         String unknownMedicalConditions =
-                editInfoActivity.getResources().getString(R.string.unknown_medical_conditions);
+                getActivity().getResources().getString(R.string.unknown_medical_conditions);
         String unknownOrganDonor =
-                editInfoActivity.getResources().getString(R.string.unknown_organ_donor);
+                getActivity().getResources().getString(R.string.unknown_organ_donor);
 
-        assertNotSame(unknownName, namePreference.getSummary());
-        assertNotSame(unknownAddress, addressPreference.getSummary());
-        assertNotSame(unknownBloodType, bloodTypePreference.getSummary());
-        assertNotSame(unknownAllergies, allergiesPreference.getSummary());
-        assertNotSame(unknownMedications, medicationsPreference.getSummary());
-        assertNotSame(unknownMedicalConditions, medicalConditionsPreference.getSummary());
-        assertNotSame(unknownOrganDonor, organDonorPreference.getSummary());
-        assertEquals(1, emergencyContactsPreference.getEmergencyContacts().size());
-        assertEquals(1, emergencyContactsPreference.getPreferenceCount());
+        assertThat(namePreference.getSummary()).isNotEqualTo(unknownName);
+        assertThat(addressPreference.getSummary()).isNotEqualTo(unknownAddress);
+        assertThat(bloodTypePreference.getSummary()).isNotEqualTo(unknownBloodType);
+        assertThat(allergiesPreference.getSummary()).isNotEqualTo(unknownAllergies);
+        assertThat(medicationsPreference.getSummary()).isNotEqualTo(unknownMedications);
+        assertThat(medicalConditionsPreference.getSummary()).isNotEqualTo(unknownMedicalConditions);
+        assertThat(organDonorPreference.getSummary()).isNotEqualTo(unknownOrganDonor);
+        assertThat(emergencyContactsPreference.getEmergencyContacts().size()).isEqualTo(1);
+        assertThat(emergencyContactsPreference.getPreferenceCount()).isEqualTo(1);
 
         EditInfoActivity.ClearAllDialogFragment clearAllDialogFragment =
-                (EditInfoActivity.ClearAllDialogFragment) editInfoActivity.getFragmentManager()
+                (EditInfoActivity.ClearAllDialogFragment) getActivity().getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_CLEAR_ALL_DIALOG);
-        assertNull(clearAllDialogFragment);
-        getInstrumentation().invokeMenuActionSync(editInfoActivity, R.id.action_clear_all,
+        assertThat(clearAllDialogFragment).isNull();
+        getInstrumentation().invokeMenuActionSync(getActivity(), R.id.action_clear_all,
                 0 /* flags */);
         getInstrumentation().waitForIdleSync();
         final EditInfoActivity.ClearAllDialogFragment clearAllDialogFragmentAfterwards =
-                (EditInfoActivity.ClearAllDialogFragment) editInfoActivity.getFragmentManager()
+                (EditInfoActivity.ClearAllDialogFragment) getActivity().getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_CLEAR_ALL_DIALOG);
 
-        assertTrue(clearAllDialogFragmentAfterwards.getDialog().isShowing());
+        // Temporarily convert a crashing test to a failing one by asserting some things aren't
+        // null that end up being null today. In the end, we want to fix the tests.
+        assertThat(clearAllDialogFragmentAfterwards).isNotNull();
+        Dialog clearAllDialog = clearAllDialogFragmentAfterwards.getDialog();
+        assertThat(clearAllDialog).isNotNull();
+        assertThat(clearAllDialog.isShowing()).isTrue();
 
         runTestOnUiThread(new Runnable() {
             @Override
@@ -176,159 +187,46 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         });
         getInstrumentation().waitForIdleSync();
 
-	assertEquals(mFragments, editInfoActivity.getFragments());
+        // After the clear all the preferences dialog is confirmed, the preferences values are
+        // reloaded, and the existing object references are updated in-place.
+        assertThat(namePreference.getSummary()).isNull();
+        assertThat(addressPreference.getSummary()).isNull();
+        assertThat(bloodTypePreference.getSummary().toString()).isEqualTo(unknownBloodType);
+        assertThat(allergiesPreference.getSummary()).isNull();
+        assertThat(medicationsPreference.getSummary()).isNull();
+        assertThat(medicalConditionsPreference.getSummary()).isNull();
+        assertThat(organDonorPreference.getSummary()).isEqualTo(unknownOrganDonor);
+        assertThat(emergencyContactsPreference.getEmergencyContacts()).isEmpty();
+        assertThat(emergencyContactsPreference.getPreferenceCount()).isEqualTo(0);
+        // The preference values are not displayed, being empty.
+        for (String key : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
+            assertWithMessage(key).that(mMedicalInfoParent.findPreference(key)).isNull();
+        }
 
-        // After clearing all the preferences, onCreate is called for both fragments.
-        // This makes the preferences point to old ones. Here we load what the user
-        // is seeing
-        final NameAutoCompletePreference namePreferenceAfterClear =
-                (NameAutoCompletePreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_NAME);
-        final EmergencyEditTextPreference addressPreferenceAfterClear =
-                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_ADDRESS);
-        final EmergencyListPreference bloodTypePreferenceAfterClear =
-                (EmergencyListPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_BLOOD_TYPE);
-        final EmergencyEditTextPreference allergiesPreferenceAfterClear =
-                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_ALLERGIES);
-        final EmergencyEditTextPreference medicationsPreferenceAfterClear =
-                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_MEDICATIONS);
-        final EmergencyEditTextPreference medicalConditionsPreferenceAfterClear =
-                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_MEDICAL_CONDITIONS);
-        final EmergencyListPreference organDonorPreferenceAfterClear =
-                (EmergencyListPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_ORGAN_DONOR);
-
-        final EmergencyContactsPreference emergencyContactsPreferenceAfterClear =
-                (EmergencyContactsPreference) mEditEmergencyContactsFragment
-                        .findPreference(PreferenceKeys.KEY_EMERGENCY_CONTACTS);
-
-        assertEquals(unknownName, namePreferenceAfterClear.getSummary());
-        assertEquals(unknownAddress, addressPreferenceAfterClear.getSummary());
-        assertEquals(unknownBloodType, bloodTypePreferenceAfterClear.getSummary().toString());
-        assertEquals(unknownAllergies, allergiesPreferenceAfterClear.getSummary());
-        assertEquals(unknownMedications, medicationsPreferenceAfterClear.getSummary());
-        assertEquals(unknownMedicalConditions, medicalConditionsPreferenceAfterClear.getSummary());
-        assertEquals(unknownOrganDonor, organDonorPreferenceAfterClear.getSummary());
-        assertEquals(0, emergencyContactsPreferenceAfterClear.getEmergencyContacts().size());
-        assertEquals(0, emergencyContactsPreferenceAfterClear.getPreferenceCount());
-
-        assertTrue(ContactTestUtils
-                .deleteContact(getActivity().getContentResolver(), "Michael", "789"));
+        assertThat(ContactTestUtils
+                .deleteContact(getActivity().getContentResolver(), "Michael", "789")).isTrue();
     }
 
-    public void testWarningDialog_onPauseAndResume() throws Throwable {
-        final EditInfoActivity.WarningDialogFragment dialog =
-                (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
-                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertTrue(dialog.getDialog().isShowing());
+    public void testAddContactPreference() throws Throwable {
+        Preference addContactPreference =
+                mFragment.findPreference(PreferenceKeys.KEY_ADD_EMERGENCY_CONTACT);
+        assertThat(addContactPreference).isNotNull();
 
-        onPause();
-        onResume();
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PICK);
+        intentFilter.addDataType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
 
-        final EditInfoActivity.WarningDialogFragment dialogAfterOnResume =
-                (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
-                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertTrue(dialogAfterOnResume.getDialog().isShowing());
-    }
-
-    public void testWarningDialog_negativeButton() throws Throwable {
-        EditInfoActivity activity = getActivity();
-        final EditInfoActivity.WarningDialogFragment dialogFragment =
-                (EditInfoActivity.WarningDialogFragment) activity.getFragmentManager()
-                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertNotNull(dialogFragment.getActivity());
-        assertTrue(dialogFragment.getDialog().isShowing());
-        runTestOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                ((AlertDialog) dialogFragment.getDialog())
-                        .getButton(DialogInterface.BUTTON_NEGATIVE)
-                        .performClick();
-            }
-        });
-        getInstrumentation().waitForIdleSync();
-
-        assertNull(dialogFragment.getDialog());
-    }
-
-    public void testWarningDialog_positiveButton() throws Throwable {
-        EditInfoActivity activity = getActivity();
-        final EditInfoActivity.WarningDialogFragment dialogFragment =
-                (EditInfoActivity.WarningDialogFragment) activity.getFragmentManager()
-                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertTrue(dialogFragment.getDialog().isShowing());
+        Instrumentation.ActivityMonitor activityMonitor =
+                getInstrumentation().addMonitor(intentFilter, null, true /* block */);
 
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
-                ((AlertDialog) dialogFragment.getDialog())
-                        .getButton(DialogInterface.BUTTON_POSITIVE)
-                        .performClick();
+                addContactPreference
+                        .getOnPreferenceClickListener().onPreferenceClick(addContactPreference);
             }
         });
-        getInstrumentation().waitForIdleSync();
-        assertNull(dialogFragment.getDialog());
 
-        onPause();
-        onResume();
-
-        EditInfoActivity.WarningDialogFragment dialogAfterOnResume =
-                (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
-                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertNull(dialogAfterOnResume);
-    }
-
-    public void testWarningDialogTimer_overOneDayAgo() throws Throwable {
-        EditInfoActivity activity = getActivity();
-        final EditInfoActivity.WarningDialogFragment dialogFragment =
-                (EditInfoActivity.WarningDialogFragment) activity.getFragmentManager()
-                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        runTestOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                ((AlertDialog) dialogFragment.getDialog())
-                        .getButton(DialogInterface.BUTTON_POSITIVE)
-                        .performClick();
-            }
-        });
-        getInstrumentation().waitForIdleSync();
-
-        onPause();
-        // Manually make the last consent be a bit over a day ago
-        long overOneDayAgoMs = System.currentTimeMillis() - EditInfoActivity.ONE_DAY_MS - 60_000;
-        PreferenceManager.getDefaultSharedPreferences(activity).edit()
-                .putLong(EditInfoActivity.KEY_LAST_CONSENT_TIME_MS,
-                        overOneDayAgoMs).commit();
-        onResume();
-
-        EditInfoActivity.WarningDialogFragment dialogAfterOnResume =
-                (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
-                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertTrue(dialogAfterOnResume.getDialog().isShowing());
-    }
-
-    private void onPause() throws Throwable {
-        runTestOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                getInstrumentation().callActivityOnPause(getActivity());
-            }
-        });
-    }
-
-    private void onResume() throws Throwable {
-        runTestOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                getInstrumentation().callActivityOnResume(getActivity());
-            }
-        });
-        getInstrumentation().waitForIdleSync();
+        assertThat(getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */)).isTrue();
     }
 
     private void forceScreenOn() {

@@ -17,6 +17,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"Favqulodda axborot"</string>
+    <string name="medical_info_title" msgid="3000192781136934887">"Tibbiy ma’lumotlar"</string>
+    <string name="edit_medical_info" msgid="6733720353375319476">"Ma’lumotlarni tahrirlash"</string>
     <string name="edit_info" msgid="5973929805855224805">"Favqulodda vaziyatlar uchun axborotni tahrirlash"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Ma’lumot"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"Kontaktlar"</string>
@@ -86,7 +88,7 @@
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"Favqulodda holatlar uchun kontaktlar"</string>
-    <string name="add_emergency_contact" msgid="4063577069613981029">"Kontakt qo‘shish"</string>
+    <string name="add_emergency_contact" msgid="4063577069613981029">"Kontakt saqlash"</string>
     <string name="fail_load_contact_picker" msgid="817205483833876726">"Kontakt tanlash vositasini topib bo‘lmadi"</string>
     <string name="fail_display_contact" msgid="4128854688897045879">"Kontaktni ko‘rsatib bo‘lmadi"</string>
     <string name="remove_contact" msgid="6934983445723096759">"<xliff:g id="CONTACT_NAME">%1$s</xliff:g> favqulodda holatlar uchun kontaktlardan olib tashlansinmi?"</string>
@@ -96,9 +98,6 @@
     <string name="cancel" msgid="7401575239009060939">"Bekor qilish"</string>
     <string name="ok" msgid="163967937451981024">"OK"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"Favqulodda vaziyatlar uchun axborot"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Bu yerda kiritiladigan ma’lumotlar faqat qurilmangizda saqlanadi. Ular telefoningiz qulfini ochmasdan turib favqulodda xizmatlarga qo‘ng‘iroq qilish vaqtida hammaga ko‘rinadi."</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"Davom etish"</string>
     <string name="no_info_provided" msgid="716200382010821001">"Telefon egasi haqida ma’lumot yo‘q"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"Agar bu sizning telefoningiz bo‘lsa, bu yerda favqulodda holatlarda ko‘rsatiladigan ma’lumotlarni qo‘shish uchun qalam belgisini bosing"</string>
     <string name="clear_all" msgid="8899013032870561633">"Hammasini o‘chirish"</string>

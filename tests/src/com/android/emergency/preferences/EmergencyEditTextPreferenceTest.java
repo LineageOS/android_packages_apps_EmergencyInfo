@@ -15,32 +15,34 @@
  */
 package com.android.emergency.preferences;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.MediumTest;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
-import com.android.emergency.edit.EditEmergencyInfoFragment;
-import com.android.emergency.edit.EditInfoActivity;
+import com.android.emergency.edit.EditMedicalInfoActivity;
+import com.android.emergency.edit.EditMedicalInfoFragment;
 
 /**
  * Tests for {@link EmergencyEditTextPreference}.
  */
 @MediumTest
 public class EmergencyEditTextPreferenceTest
-        extends ActivityInstrumentationTestCase2<EditInfoActivity> {
+        extends ActivityInstrumentationTestCase2<EditMedicalInfoActivity> {
     private EmergencyEditTextPreference mPreference;
-    private EditEmergencyInfoFragment mEditInfoFragment;
+    private EditMedicalInfoFragment mEditInfoFragment;
 
     public EmergencyEditTextPreferenceTest() {
-        super(EditInfoActivity.class);
+        super(EditMedicalInfoActivity.class);
     }
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        mEditInfoFragment = (EditEmergencyInfoFragment) getActivity().getFragments().get(0).second;
+        mEditInfoFragment = getActivity().getFragment();
         mPreference = (EmergencyEditTextPreference)
                 mEditInfoFragment.findPreference(PreferenceKeys.KEY_MEDICAL_CONDITIONS);
         try {
@@ -65,24 +67,24 @@ public class EmergencyEditTextPreferenceTest
         String summary = (String) mPreference.getSummary();
         String summaryExp =
                 getActivity().getResources().getString(R.string.unknown_medical_conditions);
-        assertEquals(summaryExp, summary);
+        assertThat(summary).isEqualTo(summaryExp);
     }
 
     public void testTitle() {
         String title = (String) mPreference.getTitle();
         String titleExp =
                 getActivity().getResources().getString(R.string.medical_conditions);
-        assertEquals(titleExp, title);
+        assertThat(title).isEqualTo(titleExp);
     }
 
     public void testProperties() {
-        assertNotNull(mPreference);
-        assertEquals(PreferenceKeys.KEY_MEDICAL_CONDITIONS, mPreference.getKey());
-        assertTrue(mPreference.isEnabled());
-        assertTrue(mPreference.isPersistent());
-        assertTrue(mPreference.isSelectable());
-        assertTrue(mPreference.isNotSet());
-        assertEquals("", mPreference.getText());
+        assertThat(mPreference).isNotNull();
+        assertThat(mPreference.getKey()).isEqualTo(PreferenceKeys.KEY_MEDICAL_CONDITIONS);
+        assertThat(mPreference.isEnabled()).isTrue();
+        assertThat(mPreference.isPersistent()).isTrue();
+        assertThat(mPreference.isSelectable()).isTrue();
+        assertThat(mPreference.isNotSet()).isTrue();
+        assertThat(mPreference.getText()).isEqualTo("");
     }
 
     public void testReloadFromPreference() throws Throwable {
@@ -95,8 +97,8 @@ public class EmergencyEditTextPreferenceTest
                 mPreference.reloadFromPreference();
             }
         });
-        assertEquals(medicalConditions, mPreference.getText());
-        assertFalse(mPreference.isNotSet());
+        assertThat(mPreference.getText()).isEqualTo(medicalConditions);
+        assertThat(mPreference.isNotSet()).isFalse();
     }
 
     public void testSetText() throws Throwable {
@@ -108,7 +110,7 @@ public class EmergencyEditTextPreferenceTest
             }
         });
 
-        assertEquals(medicalConditions, mPreference.getText());
-        assertEquals(medicalConditions, mPreference.getSummary());
+        assertThat(mPreference.getText()).isEqualTo(medicalConditions);
+        assertThat(mPreference.getSummary()).isEqualTo(medicalConditions);
     }
 }
