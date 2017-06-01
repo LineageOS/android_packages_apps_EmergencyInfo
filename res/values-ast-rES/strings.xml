@@ -115,6 +115,13 @@
     <item>@string/unknown_organ_donor</item>
   </string-array>
   <!-- Organ donor values. Do not translate -->
+  <string-array name="organ_donor_values">
+    <!-- Do not translate -->
+    <item>Yes</item>
+    <!-- Do not translate -->
+    <item>No</item>
+    <item></item>
+  </string-array>
   <!-- The title of the emergency contacts preference. [CHAR_LIMIT=40] -->
   <!-- The title of the add emergency contacts preference. [CHAR_LIMIT=40] -->
   <!-- The message of the dialog shown when removing a contact. [CHAR_LIMIT=140] -->

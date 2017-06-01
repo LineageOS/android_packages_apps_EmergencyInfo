@@ -40,6 +40,27 @@
   <!-- Blood type AB-. [CHAR_LIMIT=10] -->
   <!-- Blood type H/H. [CHAR_LIMIT=10] -->
   <!-- Blood type values. Do not translate -->
+  <string-array name="blood_type_values">
+    <!-- Do not translate -->
+    <item>0+</item>
+    <!-- Do not translate -->
+    <item>O-</item>
+    <!-- Do not translate -->
+    <item>A+</item>
+    <!-- Do not translate -->
+    <item>A-</item>
+    <!-- Do not translate -->
+    <item>B+</item>
+    <!-- Do not translate -->
+    <item>B-</item>
+    <!-- Do not translate -->
+    <item>AB+</item>
+    <!-- Do not translate -->
+    <item>AB-</item>
+    <!-- Do not translate -->
+    <item>H/H</item>
+    <item></item>
+  </string-array>
   <!-- Content descriptions for the blood types, used for talkback. -->
   <!-- Content descriptions for blood type O+, used for talkback. [CHAR_LIMIT=NONE] -->
   <!-- Content descriptions for blood type O-, used for talkback. [CHAR_LIMIT=NONE] -->
@@ -64,6 +85,13 @@
   <!-- Affirmative. [CHAR_LIMIT=10] -->
   <!-- Negative. [CHAR_LIMIT=10] -->
   <!-- Organ donor values. Do not translate -->
+  <string-array name="organ_donor_values">
+    <!-- Do not translate -->
+    <item>Yes</item>
+    <!-- Do not translate -->
+    <item>No</item>
+    <item></item>
+  </string-array>
   <!-- The title of the emergency contacts preference. [CHAR_LIMIT=40] -->
   <!-- The title of the add emergency contacts preference. [CHAR_LIMIT=40] -->
   <!-- The message of the dialog shown when removing a contact. [CHAR_LIMIT=140] -->
