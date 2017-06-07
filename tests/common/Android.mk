@@ -12,8 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := $(call my-dir)
+LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
-# Include all makefiles in subdirectories
-include $(call all-makefiles-under,$(LOCAL_PATH))
+# Include all test java files.
+LOCAL_SRC_FILES := $(call all-java-files-under, src)
+
+LOCAL_MODULE := emergencyinfo-test-common
+LOCAL_MODULE_TAGS := optional
+LOCAL_SDK_VERSION := system_current
+
+include $(BUILD_STATIC_JAVA_LIBRARY)
