@@ -136,6 +136,7 @@
   <!-- Message of dialog shown to user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=none] -->
   <string name="user_emergency_info_consent">La información qu\'introduzas equí ayudará a los auxiliares nuna emerxencia. Namái s\'atroxa nel to preséu y naide pue lleela dende\'l marcador d\'emerxencia ensin desbloquiar el teléfonu.</string>
   <!-- Label for button in confirmation dialog when the user clicks on emergency information [CHAR LIMIT=15] -->
+  <string name="emergency_info_continue">Siguir</string>
   <!-- Message shown when no emergency information has been provided by the user [CHAR LIMIT=NONE] -->
   <!-- Extra message to indicate to the user that they can add emergency information [CHAR LIMIT=NONE] -->
   <!-- Label for action item on the menu of the editing screen [CHAR LIMIT=15] -->
