@@ -26,11 +26,14 @@ import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.PreferenceManager;
 import android.util.Pair;
 import android.view.Menu;
+import android.view.View;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
@@ -81,6 +84,8 @@ public class EditInfoActivity extends Activity {
 
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
+
+        setupTheme();
     }
 
     @Override
@@ -133,6 +138,27 @@ public class EditInfoActivity extends Activity {
 
         // Refresh the UI.
         mEditInfoFragment.reloadFromPreference();
+    }
+
+    private void setupTheme() {
+        int primary = getPrimaryColor();
+        boolean isLight = Color.luminance(primary) > 0.3;
+        if (!isLight) {
+            return;
+        }
+
+        View view = findViewById(android.R.id.content);
+        int flags = view.getSystemUiVisibility();
+        flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+        view.setSystemUiVisibility(flags);
+    }
+
+    private int getPrimaryColor() {
+        int[] attr = { android.R.attr.colorPrimary };
+        TypedArray typedArray = obtainStyledAttributes(android.R.style.Theme_DeviceDefault, attr);
+        int color = typedArray.getColor(0, Color.WHITE);
+        typedArray.recycle();
+        return color;
     }
 
     /**
