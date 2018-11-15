@@ -38,9 +38,11 @@
     <!-- The default preference subtitle text to show when the date of birth is unknown. [CHAR_LIMIT=40] -->
     <string name="unknown_date_of_birth">Anhysbys</string>
     <!-- Parenthesis around the date of birth of a user. [CHAR_LIMIT=40] -->
-    <string name="dob">(<xliff:g id="date_of_birth" example="25 tach 1978">%1$s</xliff:g>)</string>
+    <string name="dob">(<xliff:g id="date_of_birth" example="25 tach 1978">%1$s</xliff:g>)
+    </string>
     <!-- The age of the user. [CHAR_LIMIT=20] -->
-    <string name="age">Oedran: <xliff:g id="numerical_age" example="29">%1$d</xliff:g></string>
+    <string name="age">Oedran: <xliff:g id="numerical_age" example="29">%1$d</xliff:g>
+    </string>
     <!-- The description of the remove date of birth icon, for talkback. [CHAR_LIMIT=NONE] -->
     <string name="remove_dob_icon_text">Tynnu dyddiad geni</string>
     <!-- The title of the blood type preference. [CHAR_LIMIT=40] -->
@@ -148,7 +150,7 @@
     <!-- The text shown in a Toast when no contact picker activity could be loaded [CHAR_LIMIT=NONE] -->
     <!-- The text shown in a Toast when the contact can't be displayed [CHAR_LIMIT=NONE] -->
     <!-- The message of the dialog shown when removing a contact. [CHAR_LIMIT=140] -->
-    <string name="remove_contact">Tynnu <xliff:g id="contact_name" example="Saunders Lewis">%1$s</xliff:g> o gysylltiadau argyfwng?</string>
+    <string name="remove_contact">Tynnu <xliff:g id="contact_name" example="Saunders Lewis">%1$s</xliff:g> o gysylltiadau argyfwng?    </string>
     <!-- The description of the remove an emergency contact, for talkback. [CHAR_LIMIT=NONE] -->
     <string name="remove_contact_icon_text">Tynnu\'r cyswllt</string>
     <!-- The text shown in a Toast when a contact couldn't be added [CHAR_LIMIT=NONE] -->
@@ -159,7 +161,8 @@
     <!-- Button text for accepting an operation. [CHAR_LIMIT=15] -->
     <string name="ok">Iawn</string>
     <!-- Subtitle for an emergency contact. [CHAR_LIMIT=NONE] -->
-    <string name="phone_type_and_phone_number"><xliff:g id="phone_type" example="Symudol">%1$s</xliff:g> • <xliff:g id="phone_number" example="0777 123 8899">%2$s</xliff:g></string>
+    <string name="phone_type_and_phone_number"><xliff:g id="phone_type" example="Symudol">%1$s</xliff:g> • <xliff:g id="phone_number" example="0777 123 8899">%2$s</xliff:g>
+    </string>
     <!-- Message shown when no emergency information has been provided by the user [CHAR LIMIT=NONE] -->
     <string name="no_info_provided">Dim gwybodaeth am berchennog y ffôn</string>
     <!-- Extra message to indicate to the user that they can add emergency information [CHAR LIMIT=NONE] -->
