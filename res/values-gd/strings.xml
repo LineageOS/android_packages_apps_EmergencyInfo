@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- The name of the app. [CHAR_LIMIT=30] -->
     <!-- The title of the medical information preferences category -->
-    <!-- The title of the action to edit the medical information preferences -->
+    <!-- The title of the action to add the medical information preferences -->
     <!-- The description of the pencil icon, for talkback. [CHAR_LIMIT=NONE] -->
     <!-- The title of the emergency info tab. [CHAR_LIMIT=15] -->
     <!-- The title of the emergency contacts tab. [CHAR_LIMIT=15] -->
@@ -85,4 +85,8 @@
     <!-- Information footer describing the use of emergency information. [CHAR LIMIT=NONE] -->
     <!-- Title for a suggestion to a user to set up their emergency information [CHAR_LIMIT=46] -->
     <!-- Explanatory text for a suggestion to a user to set up their emergency information [CHAR_LIMIT=55] -->
+    <!-- An option in a photo selection dialog, if there is no photo yet [CHAR LIMIT=50] -->
+    <!-- An option in a photo selection dialog, if there is no photo yet [CHAR LIMIT=50] -->
+    <!-- Accessibility message for the photo selector which is a button/popup with the current photo [CHAR LIMIT=50] -->
+    <!-- Title for the preference to enter the nickname of the user to display in the user switcher [CHAR LIMIT=25]-->
 </resources>
