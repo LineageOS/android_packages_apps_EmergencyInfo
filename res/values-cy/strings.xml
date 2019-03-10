@@ -107,7 +107,7 @@
     <string name="phone_type_and_phone_number"><xliff:g id="phone_type" example="Symudol">%1$s</xliff:g> • <xliff:g id="phone_number" example="0777 123 8899">%2$s</xliff:g>
     </string>
     <string name="no_info_provided">Dim gwybodaeth am berchennog y ffôn</string>
-    <string name="tap_pencil">Os mai dyma dy ffôn, tara\'r eicon pensil i ychwanegu gwybodaeth i\'w ddangos os fydd argyfwng.</string>
+    <string name="tap_pencil">Os mai dyma dy ffôn, tapia\'r eicon pensil i ychwanegu gwybodaeth i\'w ddangos os fydd argyfwng.</string>
     <string name="clear_all">Clirio\'r cyfan</string>
     <string name="clear">Clirio</string>
     <string name="clear_all_message">Clirio\'r holl wybodaeth a chysylltiadau?</string>
