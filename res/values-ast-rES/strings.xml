@@ -16,6 +16,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label">Información d\'emerxencia</string>
+    <string name="add_medical_info">Amestar información</string>
     <string name="edit_info">Editar información d\'emerxencia</string>
     <string name="tab_title_info">Información</string>
     <string name="tab_title_contacts">Contautos</string>
@@ -124,4 +125,9 @@
     <string name="clear_all">Llimpiar too</string>
     <string name="clear">Llimpiar</string>
     <string name="clear_all_message">¿Llimpiar tola información y contautos?</string>
+    <string name="settings_suggestion_body">Dexa que los primeros que respuendan vean la to información</string>
+    <string name="user_image_take_photo">Facer semeya</string>
+    <string name="user_image_choose_photo">Esbillar semeya de la galería</string>
+    <string name="user_image_photo_selector">Esbillar semeya</string>
+    <string name="user_nickname">Nomatu</string>
 </resources>
