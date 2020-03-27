@@ -14,21 +14,15 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string-array name="blood_type_values">
-        <item>0+</item>
-        <item>O-</item>
-        <item>A+</item>
-        <item>A-</item>
-        <item>B+</item>
-        <item>B-</item>
-        <item>AB+</item>
-        <item>AB-</item>
-        <item>H/H</item>
-        <item/>
-    </string-array>
-    <string-array name="organ_donor_values">
-        <item>Yes</item>
-        <item>No</item>
-        <item/>
-    </string-array>
+    <string name="add_medical_info">Cuir fiosrachadh ris</string>
+    <string name="tab_title_info">Fiosrachadh</string>
+    <string name="tab_title_contacts">Luchd-aithne</string>
+    <string name="name">Ainm</string>
+    <string name="address">Seòladh</string>
+    <string name="clear_all">Falamhaich na h-uile</string>
+    <string name="settings_suggestion_body">Ceadaich dhan luchd-cobharach coimhead air an fhiosrachadh agad</string>
+    <string name="user_image_take_photo">Tog dealbh</string>
+    <string name="user_image_choose_photo">Tagh dealbh on ghailearaidh</string>
+    <string name="user_image_photo_selector">Tagh dealbh</string>
+    <string name="user_nickname">Far-ainm</string>
 </resources>
