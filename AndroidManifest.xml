@@ -26,6 +26,18 @@
 
     <uses-sdk android:minSdkVersion="21"/>
 
+    <queries>
+        <!-- Needed to take photos as user avatar in Medical info UI -->
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <!-- Needed to edit images as user avatar in Medical info UI -->
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+            <data android:mimeType="image/*" />
+        </intent>
+    </queries>
+
     <application android:defaultToDeviceProtectedStorage="true"
          android:icon="@mipmap/ic_local_hospital_24dp"
          android:directBootAware="true"
