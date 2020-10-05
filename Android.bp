@@ -34,6 +34,7 @@ android_library {
     resource_dirs: ["res"],
     srcs: ["src/**/*.java"],
     static_libs: [
+        "android-support-v4",
         "androidx.legacy_legacy-preference-v14",
         "androidx.legacy_legacy-support-v13",
         "androidx.appcompat_appcompat",

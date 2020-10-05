@@ -27,4 +27,7 @@
     <color name="primary_dark_color">@color/material_grey_300</color>
     <color name="accent_color_light">@color/accent_material_light</color>
     <color name="accent_color_dark">@color/accent_material_dark</color>
+
+    <color name="emergency_action_title_color">#F28B82</color>
+
 </resources>
