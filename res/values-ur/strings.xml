@@ -110,4 +110,6 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"ایک تصویر منتخب کریں"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"تصویر منتخب کریں"</string>
     <string name="user_nickname" msgid="7956055372443961161">"عرفی نام"</string>
+    <!-- no translation found for emergency_action_title (941929443439145491) -->
+    <skip />
 </resources>
