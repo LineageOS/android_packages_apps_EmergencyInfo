@@ -110,4 +110,5 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"इमेज चुनें"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"फ़ोटो चुनें"</string>
     <string name="user_nickname" msgid="7956055372443961161">"प्रचलित नाम"</string>
+    <string name="emergency_action_title" msgid="941929443439145491">"आपातकालीन एसओएस चेतावनी"</string>
 </resources>
