@@ -75,7 +75,8 @@
             android:name=".EmergencyDialerTrampoline"
             android:theme="@android:style/Theme.NoDisplay"
             android:excludeFromRecents="true"
-            android:exported="true">
+            android:enabled="false"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.DIAL_EMERGENCY"/>
                 <category android:name="android.intent.category.DEFAULT"/>
