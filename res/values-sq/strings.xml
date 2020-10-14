@@ -110,6 +110,5 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"Zgjidh një imazh"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Zgjidh një fotografi"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Pseudonimi"</string>
-    <!-- no translation found for emergency_action_title (941929443439145491) -->
-    <skip />
+    <string name="emergency_action_title" msgid="941929443439145491">"SOS i urgjencës"</string>
 </resources>
