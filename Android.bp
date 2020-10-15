@@ -43,6 +43,7 @@ android_library {
         "androidx.legacy_legacy-support-v4",
         "com.google.android.material_material",
         "androidx.transition_transition",
+        "guava",
     ],
     defaults: ["SettingsLibDefaults"],
 }

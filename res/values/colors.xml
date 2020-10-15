@@ -29,5 +29,6 @@
     <color name="accent_color_dark">@color/accent_material_dark</color>
 
     <color name="emergency_action_title_color">#F28B82</color>
+    <color name="emergency_action_subtitle_color">#FFFFFF</color>
 
 </resources>
