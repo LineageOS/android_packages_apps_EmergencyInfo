@@ -111,4 +111,7 @@
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Изберете снимка"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Псевдоним"</string>
     <string name="emergency_action_title" msgid="941929443439145491">"Спешен случай (SOS)"</string>
+    <string name="emergency_action_subtitle" msgid="701115059688524870">"Запазете спокойствие. Стартира се обаждане до службите за спешни случаи."</string>
+    <string name="count_down_unit" msgid="7564524705923795574">"с"</string>
+    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 секунда}other{# секунди}}"</string>
 </resources>
