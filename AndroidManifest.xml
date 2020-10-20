@@ -19,6 +19,7 @@
      package="com.android.emergency"
      android:sharedUserId="com.android.emergency.uid">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.CALL_PRIVILEGED"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
@@ -122,7 +123,7 @@
         </activity>
 
         <activity-alias android:name=".action.EmergencyAction"
-             android:label="Emergency Action"
+             android:label="@string/emergency_action_title"
              android:targetActivity=".action.EmergencyActionActivity"
              android:permission="android.permission.MANAGE_SENSOR_PRIVACY"
              android:enabled="true"
@@ -131,13 +132,16 @@
             <intent-filter>
                 <!-- TODO (b/169175022) Update action name and docs when feature name is locked -->
                 <action android:name="com.android.systemui.action.LAUNCH_EMERGENCY"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity-alias>
 
         <activity android:name=".action.EmergencyActionActivity"
-             android:label="Emergency Action"
+             android:label="@string/emergency_action_title"
              android:theme="@style/AppThemeEmergencyAction"
              android:showWhenLocked="true"
+             android:turnScreenOn="true"
+             android:noHistory="true"
              android:exported="false">
         </activity>
 
