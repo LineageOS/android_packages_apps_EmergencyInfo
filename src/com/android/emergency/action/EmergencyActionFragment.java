@@ -16,12 +16,26 @@
 
 package com.android.emergency.action;
 
+import static android.Manifest.permission.READ_PHONE_STATE;
+import static android.telecom.TelecomManager.EXTRA_CALL_SOURCE;
+import static android.telephony.emergency.EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE;
+
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
+import android.telecom.PhoneAccount;
+import android.telecom.TelecomManager;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
+import android.telephony.emergency.EmergencyNumber;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,18 +44,36 @@ import com.android.emergency.R;
 import com.android.emergency.widgets.countdown.CountDownAnimationView;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
 public class EmergencyActionFragment extends Fragment {
 
+    private static final String TAG = "EmergencyActionFrag";
     private static final String STATE_MILLIS_LEFT = "STATE_MILLIS_LEFT";
 
+    private TelephonyManager mTelephonyManager;
+    private TelecomManager mTelecomManager;
+    private SubscriptionManager mSubscriptionManager;
     private CountDownTimer mCountDownTimer;
     private long mCountDownMillisLeft;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        mTelephonyManager = context.getSystemService(TelephonyManager.class);
+        mSubscriptionManager = context.getSystemService(SubscriptionManager.class);
+        mTelecomManager = context.getSystemService(TelecomManager.class);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.emergency_action_fragment, container, false);
+
+        TextView subtitleView = view.findViewById(R.id.subtitle);
+        subtitleView.setText(getString(R.string.emergency_action_subtitle, getEmergencyNumber()));
 
         if (savedInstanceState != null) {
             mCountDownMillisLeft = savedInstanceState.getLong(STATE_MILLIS_LEFT);
@@ -77,6 +109,30 @@ public class EmergencyActionFragment extends Fragment {
         }
     }
 
+    private String getEmergencyNumber() {
+        if (getContext().checkSelfPermission(READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+            Log.w(TAG, "READ_PHONE_STATE permission is not granted.");
+            return getContext().getString(R.string.fallback_emergency_number);
+        }
+
+        Map<Integer, List<EmergencyNumber>> emergencyNumberListMap =
+                mTelephonyManager.getEmergencyNumberList(EMERGENCY_SERVICE_CATEGORY_POLICE);
+        if (!emergencyNumberListMap.isEmpty()) {
+            List<EmergencyNumber> emergencyNumberList =
+                    emergencyNumberListMap.get(
+                            mSubscriptionManager.getDefaultSubscriptionId());
+            if (!emergencyNumberList.isEmpty()) {
+                String emergencyNumber = emergencyNumberList.get(0).getNumber();
+                Log.i(TAG, "Emergency number from TelephonyManager: " + emergencyNumber);
+                return emergencyNumber;
+            }
+        }
+
+        Log.w(TAG, "Unable to get emergency number from TelephonyManager.");
+        return getContext().getString(R.string.fallback_emergency_number);
+    }
+
     private void startTimer() {
         CountDownAnimationView countDownAnimationView =
                 getView().findViewById(R.id.count_down_view);
@@ -104,8 +160,8 @@ public class EmergencyActionFragment extends Fragment {
 
                     @Override
                     public void onFinish() {
+                        startEmergencyCall();
                         getActivity().finish();
-                        // TODO(b/169946688): Call emergency service on count down finish.
                     }
                 };
 
@@ -113,5 +169,14 @@ public class EmergencyActionFragment extends Fragment {
 
         countDownAnimationView.start(Duration.ofMillis(mCountDownMillisLeft));
         countDownAnimationView.showCountDown();
+    }
+
+    private void startEmergencyCall() {
+        Bundle extras = new Bundle();
+        extras.putBoolean(TelecomManager.EXTRA_IS_USER_INTENT_EMERGENCY_CALL, true);
+        extras.putInt(EXTRA_CALL_SOURCE, TelecomManager.CALL_SOURCE_EMERGENCY_SHORTCUT);
+
+        mTelecomManager.placeCall(
+                Uri.fromParts(PhoneAccount.SCHEME_TEL, getEmergencyNumber(), null), extras);
     }
 }

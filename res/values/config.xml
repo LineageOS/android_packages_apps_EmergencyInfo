@@ -22,6 +22,9 @@
     <bool name="config_search_index_disabled">false</bool>
     <item name="config_screenBrightnessDimFloat" format="float" type="dimen">0.05</item>
 
+    <!-- Fallback emergency number if Telephony fails to provide data. -->
+    <string name="fallback_emergency_number" translatable="false">112</string>
+
     <!-- Milliseconds to count down, from starting emergency action view, to starting an emergency call -->
     <integer name="emergency_action_count_down_millis">6000</integer>
     <!-- Milliseconds to update the count down animation view text when counting down -->
