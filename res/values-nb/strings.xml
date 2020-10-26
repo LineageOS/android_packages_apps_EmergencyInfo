@@ -111,8 +111,7 @@
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Velg et bilde"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Kallenavn"</string>
     <string name="emergency_action_title" msgid="941929443439145491">"SOS for nødssituasjoner"</string>
-    <!-- no translation found for emergency_action_subtitle (4100458927956443688) -->
-    <skip />
+    <string name="emergency_action_subtitle" msgid="4100458927956443688">"Hold deg rolig. Vi starter et anrop til <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> for deg."</string>
     <string name="count_down_unit" msgid="7564524705923795574">"s"</string>
     <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 sekund}other{# sekunder}}"</string>
 </resources>

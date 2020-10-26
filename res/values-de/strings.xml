@@ -113,8 +113,6 @@
     <string name="emergency_action_title" msgid="941929443439145491">"Notruf"</string>
     <!-- no translation found for emergency_action_subtitle (4100458927956443688) -->
     <skip />
-    <!-- no translation found for count_down_unit (7564524705923795574) -->
-    <skip />
-    <!-- no translation found for countdown_text_content_description (4999365354802361081) -->
-    <skip />
+    <string name="count_down_unit" msgid="7564524705923795574">"s"</string>
+    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 Sekunde}other{# Sekunden}}"</string>
 </resources>
