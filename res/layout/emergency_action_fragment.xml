@@ -30,7 +30,7 @@
         android:fontFamily="sans-serif"
         android:textSize="24sp"
         android:lineHeight="32dp"
-        android:textColor="@color/emergency_action_title_color"
+        android:textColor="@color/emergency_action_accent"
         android:textAlignment="center"/>
 
     <TextView
@@ -57,5 +57,20 @@
             android:layout_height="178dp"
             android:layout_gravity="center"/>
     </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="48dp"
+        android:padding="32dp"
+        android:text="@string/cancel"
+        android:textAllCaps="false"
+        android:fontFamily="sans-serif"
+        android:textSize="20sp"
+        android:lineHeight="28dp"
+        android:textColor="@color/emergency_action_subtitle_color"
+        android:background="@drawable/bg_cancel_btn"/>
 
 </LinearLayout>
