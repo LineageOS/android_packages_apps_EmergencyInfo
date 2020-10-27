@@ -20,11 +20,16 @@ import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.telecom.TelecomManager.EXTRA_CALL_SOURCE;
 import static android.telephony.emergency.EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE;
 
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.media.AudioAttributes;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
@@ -35,6 +40,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,9 +58,12 @@ public class EmergencyActionFragment extends Fragment {
     private static final String TAG = "EmergencyActionFrag";
     private static final String STATE_MILLIS_LEFT = "STATE_MILLIS_LEFT";
 
+    private MediaPlayer mMediaPlayer;
+
     private TelephonyManager mTelephonyManager;
     private TelecomManager mTelecomManager;
     private SubscriptionManager mSubscriptionManager;
+    private KeyguardManager mKeyguardManager;
     private CountDownTimer mCountDownTimer;
     private long mCountDownMillisLeft;
 
@@ -65,6 +74,7 @@ public class EmergencyActionFragment extends Fragment {
         mTelephonyManager = context.getSystemService(TelephonyManager.class);
         mSubscriptionManager = context.getSystemService(SubscriptionManager.class);
         mTelecomManager = context.getSystemService(TelecomManager.class);
+        mKeyguardManager = context.getSystemService(KeyguardManager.class);
     }
 
     @Override
@@ -74,6 +84,22 @@ public class EmergencyActionFragment extends Fragment {
 
         TextView subtitleView = view.findViewById(R.id.subtitle);
         subtitleView.setText(getString(R.string.emergency_action_subtitle, getEmergencyNumber()));
+
+        Button cancelButton = view.findViewById(R.id.btn_cancel);
+        cancelButton.setOnClickListener(
+                v -> {
+                    if (mKeyguardManager.isKeyguardLocked()) {
+                        mKeyguardManager.requestDismissKeyguard(
+                                getActivity(), new KeyguardManager.KeyguardDismissCallback() {
+                                    @Override
+                                    public void onDismissSucceeded() {
+                                        getActivity().finish();
+                                    }
+                                });
+                    } else {
+                        getActivity().finish();
+                    }
+                });
 
         if (savedInstanceState != null) {
             mCountDownMillisLeft = savedInstanceState.getLong(STATE_MILLIS_LEFT);
@@ -89,6 +115,7 @@ public class EmergencyActionFragment extends Fragment {
     public void onStart() {
         super.onStart();
         startTimer();
+        playWarningSound();
     }
 
     @Override
@@ -107,6 +134,8 @@ public class EmergencyActionFragment extends Fragment {
             countDownAnimationView.stop();
             mCountDownTimer.cancel();
         }
+
+        stopWarningSound();
     }
 
     private String getEmergencyNumber() {
@@ -169,6 +198,46 @@ public class EmergencyActionFragment extends Fragment {
 
         countDownAnimationView.start(Duration.ofMillis(mCountDownMillisLeft));
         countDownAnimationView.showCountDown();
+    }
+
+    private boolean isPlayWarningSoundEnabled() {
+        return Settings.Secure.getIntForUser(getContext().getContentResolver(),
+                Settings.Secure.EMERGENCY_GESTURE_SOUND_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
+    }
+
+    private void playWarningSound() {
+        if (!isPlayWarningSoundEnabled()) {
+            return;
+        }
+
+        if (mMediaPlayer == null) {
+            mMediaPlayer = MediaPlayer.create(
+                    getContext(),
+                    R.raw.alarm,
+                    new AudioAttributes.Builder()
+                            .setUsage(AudioAttributes.USAGE_ALARM)
+                            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                            .build(),
+                    /* audioSessionId= */ 0);
+        }
+
+        mMediaPlayer.setOnCompletionListener(mp -> mp.release());
+        mMediaPlayer.setOnErrorListener(
+                (MediaPlayer mp, int what, int extra) -> {
+                    Log.w(TAG, "MediaPlayer playback failed with error code: " + what
+                            + ", and extra code: " + extra);
+                    mp.release();
+                    return false;
+                });
+
+        mMediaPlayer.start();
+    }
+
+    private void stopWarningSound() {
+        if (mMediaPlayer.isPlaying()) {
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+        }
     }
 
     private void startEmergencyCall() {
