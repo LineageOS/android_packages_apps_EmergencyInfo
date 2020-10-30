@@ -20,7 +20,6 @@ import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.telecom.TelecomManager.EXTRA_CALL_SOURCE;
 import static android.telephony.emergency.EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE;
 
-import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.media.AudioAttributes;
@@ -40,7 +39,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,12 +46,14 @@ import androidx.annotation.Nullable;
 
 import com.android.emergency.R;
 import com.android.emergency.widgets.countdown.CountDownAnimationView;
+import com.android.emergency.widgets.slider.OnSlideCompleteListener;
+import com.android.emergency.widgets.slider.SliderView;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
-public class EmergencyActionFragment extends Fragment {
+public class EmergencyActionFragment extends Fragment implements OnSlideCompleteListener {
 
     private static final String TAG = "EmergencyActionFrag";
     private static final String STATE_MILLIS_LEFT = "STATE_MILLIS_LEFT";
@@ -63,7 +63,6 @@ public class EmergencyActionFragment extends Fragment {
     private TelephonyManager mTelephonyManager;
     private TelecomManager mTelecomManager;
     private SubscriptionManager mSubscriptionManager;
-    private KeyguardManager mKeyguardManager;
     private CountDownTimer mCountDownTimer;
     private long mCountDownMillisLeft;
 
@@ -74,7 +73,6 @@ public class EmergencyActionFragment extends Fragment {
         mTelephonyManager = context.getSystemService(TelephonyManager.class);
         mSubscriptionManager = context.getSystemService(SubscriptionManager.class);
         mTelecomManager = context.getSystemService(TelecomManager.class);
-        mKeyguardManager = context.getSystemService(KeyguardManager.class);
     }
 
     @Override
@@ -85,21 +83,8 @@ public class EmergencyActionFragment extends Fragment {
         TextView subtitleView = view.findViewById(R.id.subtitle);
         subtitleView.setText(getString(R.string.emergency_action_subtitle, getEmergencyNumber()));
 
-        Button cancelButton = view.findViewById(R.id.btn_cancel);
-        cancelButton.setOnClickListener(
-                v -> {
-                    if (mKeyguardManager.isKeyguardLocked()) {
-                        mKeyguardManager.requestDismissKeyguard(
-                                getActivity(), new KeyguardManager.KeyguardDismissCallback() {
-                                    @Override
-                                    public void onDismissSucceeded() {
-                                        getActivity().finish();
-                                    }
-                                });
-                    } else {
-                        getActivity().finish();
-                    }
-                });
+        SliderView cancelButton = view.findViewById(R.id.btn_cancel);
+        cancelButton.setSlideCompleteListener(this);
 
         if (savedInstanceState != null) {
             mCountDownMillisLeft = savedInstanceState.getLong(STATE_MILLIS_LEFT);
@@ -136,6 +121,11 @@ public class EmergencyActionFragment extends Fragment {
         }
 
         stopWarningSound();
+    }
+
+    @Override
+    public void onSlideComplete() {
+        getActivity().finish();
     }
 
     private String getEmergencyNumber() {

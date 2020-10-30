@@ -31,4 +31,6 @@
     <color name="emergency_action_accent">#F28B82</color>
     <color name="emergency_action_subtitle_color">#FFFFFF</color>
 
+    <color name="slider_track_background_color">#333333</color>
+    <color name="slider_thumb_background_color">#5c5c5c</color>
 </resources>

@@ -240,4 +240,6 @@
             other {# seconds}
         }
     </string>
+    <!-- Content description for slider button [CHAR_LIMIT=NONE]-->
+    <string name="slider_seek_bar_content_description">Slide with two fingers to activate</string>
 </resources>
