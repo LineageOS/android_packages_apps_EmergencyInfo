@@ -234,7 +234,7 @@ public class EmergencyActionFragment extends Fragment {
     }
 
     private void stopWarningSound() {
-        if (mMediaPlayer.isPlaying()) {
+        if (mMediaPlayer!= null && mMediaPlayer.isPlaying()) {
             mMediaPlayer.stop();
             mMediaPlayer.release();
         }
