@@ -110,8 +110,4 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"اختيار صورة"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"اختيار صورة"</string>
     <string name="user_nickname" msgid="7956055372443961161">"اللقب"</string>
-    <string name="emergency_action_title" msgid="941929443439145491">"‏تنبيه SOS في حالة طوارئ"</string>
-    <string name="emergency_action_subtitle" msgid="4100458927956443688">"حافظ على هدوئك. جارٍ إجراء مكالمة مع <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> نيابةً عنك."</string>
-    <string name="count_down_unit" msgid="7564524705923795574">"ث"</string>
-    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{ثانية واحدة}zero{# ثانية}two{ثانيتان}few{# ثوانٍ}many{# ثانية}other{# ثانية}}"</string>
 </resources>

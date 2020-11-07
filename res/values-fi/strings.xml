@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="1090682794607161063">"Vaaratiedot"</string>
+    <string name="app_label" msgid="1090682794607161063">"Hätätilannetiedot"</string>
     <string name="medical_info_title" msgid="3000192781136934887">"Lääke- ja terveystiedot"</string>
     <string name="add_medical_info" msgid="483921612415907139">"Tietojen lisääminen"</string>
     <string name="edit_info" msgid="5973929805855224805">"Muokkaa hätätilannetietoja"</string>
@@ -110,8 +110,4 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"Valitse kuva"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Valitse kuva"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Lempinimi"</string>
-    <string name="emergency_action_title" msgid="941929443439145491">"Hätätilanne"</string>
-    <string name="emergency_action_subtitle" msgid="4100458927956443688">"Ota rauhallisesti. Soitetaan numeroon <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>."</string>
-    <string name="count_down_unit" msgid="7564524705923795574">"s"</string>
-    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 sekunti}other{# sekuntia}}"</string>
 </resources>

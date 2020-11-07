@@ -110,8 +110,4 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"選擇圖片"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"揀相"</string>
     <string name="user_nickname" msgid="7956055372443961161">"暱稱"</string>
-    <string name="emergency_action_title" msgid="941929443439145491">"緊急求救"</string>
-    <string name="emergency_action_subtitle" msgid="4100458927956443688">"請保持冷靜。系統正在為您致電 <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>。"</string>
-    <string name="count_down_unit" msgid="7564524705923795574">"秒"</string>
-    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 秒}other{# 秒}}"</string>
 </resources>
