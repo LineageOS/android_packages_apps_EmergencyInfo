@@ -26,7 +26,7 @@
     <string name="unknown_name" msgid="2834802479170495056">"Ezezaguna"</string>
     <string name="address" msgid="6449303483151189969">"Helbidea"</string>
     <string name="unknown_address" msgid="4212576729941786121">"Ezezaguna"</string>
-    <string name="date_of_birth" msgid="777979232444227891">"Jaioteguna"</string>
+    <string name="date_of_birth" msgid="777979232444227891">"Jaiotze-data"</string>
     <string name="unknown_date_of_birth" msgid="7416355536916066758">"Ezezaguna"</string>
     <string name="dob" msgid="2813161080307245706">"(<xliff:g id="DATE_OF_BIRTH">%1$s</xliff:g>)"</string>
     <string name="age" msgid="8327537794752630199">"Adina: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
@@ -110,4 +110,9 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"Aukeratu irudi bat"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Hautatu argazki bat"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Goitizena"</string>
+    <string name="emergency_action_title" msgid="941929443439145491">"Larrialdia"</string>
+    <string name="emergency_action_subtitle" msgid="4100458927956443688">"Ez larritu. Larrialdi-zerbitzuetara (<xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>) deitzen ari gara."</string>
+    <string name="count_down_unit" msgid="7564524705923795574">"s"</string>
+    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 segundo}other{# segundo}}"</string>
+    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"Aktibatzeko, lerratu bi hatzekin"</string>
 </resources>

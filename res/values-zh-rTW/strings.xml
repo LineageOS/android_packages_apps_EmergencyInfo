@@ -105,9 +105,14 @@
     <string name="clear_all_message" msgid="1548432000373861295">"要清除所有資訊和聯絡人嗎？"</string>
     <string name="emergency_info_footer" msgid="8751758742506410146">"新增醫療資訊和緊急聯絡人，以便第一線救援人員在發生緊急事件時提供相關協助。\n\n任何人不必先將手機解鎖，都能在鎖定畫面上查看這項資訊，而且只要輕觸緊急聯絡人姓名，即可撥打對方號碼。"</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"新增緊急救援資訊"</string>
-    <string name="settings_suggestion_body" msgid="5559349261345837716">"讓第一位回覆者查看你的資訊"</string>
+    <string name="settings_suggestion_body" msgid="5559349261345837716">"讓第一線救護人員查看你的資訊"</string>
     <string name="user_image_take_photo" msgid="2779924488370750102">"拍照"</string>
     <string name="user_image_choose_photo" msgid="2442095378052415700">"選擇圖片"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"選取相片"</string>
     <string name="user_nickname" msgid="7956055372443961161">"暱稱"</string>
+    <string name="emergency_action_title" msgid="941929443439145491">"緊急 SOS"</string>
+    <string name="emergency_action_subtitle" msgid="4100458927956443688">"請保持冷靜，系統將開始為你撥打 <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>。"</string>
+    <string name="count_down_unit" msgid="7564524705923795574">"秒"</string>
+    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 秒}other{# 秒}}"</string>
+    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"用雙指滑動即可啟用"</string>
 </resources>

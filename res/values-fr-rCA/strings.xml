@@ -105,9 +105,14 @@
     <string name="clear_all_message" msgid="1548432000373861295">"Effacer toutes les données et tous les contacts?"</string>
     <string name="emergency_info_footer" msgid="8751758742506410146">"L\'ajout de données médicales et de contacts d\'urgence peut aider les premiers intervenants en cas d\'urgence.\n\nTout le monde peut voir cette information sur votre écran de verrouillage et appeler vos contacts en touchant leur nom sans devoir déverrouiller votre téléphone."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Ajouter des données d\'urgence"</string>
-    <string name="settings_suggestion_body" msgid="5559349261345837716">"Laissez premiers intervenants voir vos données d\'urgence"</string>
+    <string name="settings_suggestion_body" msgid="5559349261345837716">"Laissez les premiers intervenants voir vos données d\'urgence"</string>
     <string name="user_image_take_photo" msgid="2779924488370750102">"Prendre une photo"</string>
     <string name="user_image_choose_photo" msgid="2442095378052415700">"Sélectionner une image"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Sélectionner une photo"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Pseudonyme"</string>
+    <string name="emergency_action_title" msgid="941929443439145491">"Alerte SOS"</string>
+    <string name="emergency_action_subtitle" msgid="4100458927956443688">"Restez calme. Un appel au <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> va démarrer pour vous."</string>
+    <string name="count_down_unit" msgid="7564524705923795574">"s"</string>
+    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 seconde}one{# seconde}other{# secondes}}"</string>
+    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"Balayez avec deux doigts pour activer"</string>
 </resources>

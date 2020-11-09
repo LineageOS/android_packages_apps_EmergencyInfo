@@ -110,4 +110,9 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"படத்தைத் தேர்வுசெய்க"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"படத்தைத் தேர்ந்தெடுக்கும்"</string>
     <string name="user_nickname" msgid="7956055372443961161">"புனைப்பெயர்"</string>
+    <string name="emergency_action_title" msgid="941929443439145491">"அவசரகால SOS"</string>
+    <string name="emergency_action_subtitle" msgid="4100458927956443688">"பதற்றம் வேண்டாம். உங்களுக்காக <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>க்கு அழைக்கிறோம்."</string>
+    <string name="count_down_unit" msgid="7564524705923795574">"வி"</string>
+    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 வினாடி}other{# வினாடிகள்}}"</string>
+    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"இயக்குவதற்கு, இரு விரல்களால் ஸ்லைடு செய்யவும்"</string>
 </resources>

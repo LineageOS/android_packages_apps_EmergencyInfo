@@ -87,7 +87,7 @@
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
-    <string name="emergency_contacts_title" msgid="5462202017417821030">"Контакты для чрезвычайных ситуаций"</string>
+    <string name="emergency_contacts_title" msgid="5462202017417821030">"Контакты для экстренных случаев"</string>
     <string name="add_emergency_contact" msgid="4063577069613981029">"Добавить контакт"</string>
     <string name="fail_load_contact_picker" msgid="817205483833876726">"Не удалось найти средство выбора контактов‏"</string>
     <string name="fail_display_contact" msgid="4128854688897045879">"Не удалось показать контакт"</string>
@@ -110,4 +110,9 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"Выбрать фото"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Выбрать фотографию"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Псевдоним"</string>
+    <string name="emergency_action_title" msgid="941929443439145491">"Оповещения SOS"</string>
+    <string name="emergency_action_subtitle" msgid="4100458927956443688">"Сохраняйте спокойствие. Мы звоним в экстренную службу по номеру <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>."</string>
+    <string name="count_down_unit" msgid="7564524705923795574">"сек."</string>
+    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 секунда}one{# секунда}few{# секунды}many{# секунд}other{# секунды}}"</string>
+    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"Чтобы активировать, нужно провести двумя пальцами"</string>
 </resources>
