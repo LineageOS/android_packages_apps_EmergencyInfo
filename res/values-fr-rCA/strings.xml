@@ -113,6 +113,6 @@
     <string name="emergency_action_title" msgid="941929443439145491">"Alerte SOS"</string>
     <string name="emergency_action_subtitle" msgid="4100458927956443688">"Restez calme. Un appel au <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> va démarrer pour vous."</string>
     <string name="count_down_unit" msgid="7564524705923795574">"s"</string>
-    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 seconde}one{# seconde}other{# secondes}}"</string>
+    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 seconde}one{# seconde}many{# seconds}other{# secondes}}"</string>
     <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"Balayez avec deux doigts pour activer"</string>
 </resources>
