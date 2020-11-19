@@ -16,12 +16,9 @@
 
 package com.android.emergency.action;
 
-import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.telecom.TelecomManager.EXTRA_CALL_SOURCE;
-import static android.telephony.emergency.EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -32,9 +29,6 @@ import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
-import android.telephony.SubscriptionManager;
-import android.telephony.TelephonyManager;
-import android.telephony.emergency.EmergencyNumber;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,10 +42,9 @@ import com.android.emergency.R;
 import com.android.emergency.widgets.countdown.CountDownAnimationView;
 import com.android.emergency.widgets.slider.OnSlideCompleteListener;
 import com.android.emergency.widgets.slider.SliderView;
+import com.android.settingslib.emergencynumber.EmergencyNumberUtils;
 
 import java.time.Duration;
-import java.util.List;
-import java.util.Map;
 
 public class EmergencyActionFragment extends Fragment implements OnSlideCompleteListener {
 
@@ -59,19 +52,15 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
     private static final String STATE_MILLIS_LEFT = "STATE_MILLIS_LEFT";
 
     private MediaPlayer mMediaPlayer;
-
-    private TelephonyManager mTelephonyManager;
     private TelecomManager mTelecomManager;
-    private SubscriptionManager mSubscriptionManager;
     private CountDownTimer mCountDownTimer;
+    private EmergencyNumberUtils mEmergencyNumberUtils;
     private long mCountDownMillisLeft;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
-        mTelephonyManager = context.getSystemService(TelephonyManager.class);
-        mSubscriptionManager = context.getSystemService(SubscriptionManager.class);
+        mEmergencyNumberUtils = new EmergencyNumberUtils(context);
         mTelecomManager = context.getSystemService(TelecomManager.class);
     }
 
@@ -81,7 +70,8 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
         View view = inflater.inflate(R.layout.emergency_action_fragment, container, false);
 
         TextView subtitleView = view.findViewById(R.id.subtitle);
-        subtitleView.setText(getString(R.string.emergency_action_subtitle, getEmergencyNumber()));
+        subtitleView.setText(getString(R.string.emergency_action_subtitle,
+                mEmergencyNumberUtils.getPoliceNumber()));
 
         SliderView cancelButton = view.findViewById(R.id.btn_cancel);
         cancelButton.setSlideCompleteListener(this);
@@ -126,30 +116,6 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
     @Override
     public void onSlideComplete() {
         getActivity().finish();
-    }
-
-    private String getEmergencyNumber() {
-        if (getContext().checkSelfPermission(READ_PHONE_STATE)
-                != PackageManager.PERMISSION_GRANTED) {
-            Log.w(TAG, "READ_PHONE_STATE permission is not granted.");
-            return getContext().getString(R.string.fallback_emergency_number);
-        }
-
-        Map<Integer, List<EmergencyNumber>> emergencyNumberListMap =
-                mTelephonyManager.getEmergencyNumberList(EMERGENCY_SERVICE_CATEGORY_POLICE);
-        if (!emergencyNumberListMap.isEmpty()) {
-            List<EmergencyNumber> emergencyNumberList =
-                    emergencyNumberListMap.get(
-                            mSubscriptionManager.getDefaultSubscriptionId());
-            if (!emergencyNumberList.isEmpty()) {
-                String emergencyNumber = emergencyNumberList.get(0).getNumber();
-                Log.i(TAG, "Emergency number from TelephonyManager: " + emergencyNumber);
-                return emergencyNumber;
-            }
-        }
-
-        Log.w(TAG, "Unable to get emergency number from TelephonyManager.");
-        return getContext().getString(R.string.fallback_emergency_number);
     }
 
     private void startTimer() {
@@ -224,7 +190,7 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
     }
 
     private void stopWarningSound() {
-        if (mMediaPlayer!= null && mMediaPlayer.isPlaying()) {
+        if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
             mMediaPlayer.stop();
             mMediaPlayer.release();
         }
@@ -236,6 +202,7 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
         extras.putInt(EXTRA_CALL_SOURCE, TelecomManager.CALL_SOURCE_EMERGENCY_SHORTCUT);
 
         mTelecomManager.placeCall(
-                Uri.fromParts(PhoneAccount.SCHEME_TEL, getEmergencyNumber(), null), extras);
+                Uri.fromParts(PhoneAccount.SCHEME_TEL, mEmergencyNumberUtils.getPoliceNumber(),
+                        null), extras);
     }
 }
