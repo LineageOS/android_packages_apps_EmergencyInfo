@@ -136,14 +136,15 @@
             </intent-filter>
         </activity-alias>
 
-        <activity android:name=".action.EmergencyActionActivity"
-             android:label="@string/emergency_action_title"
-             android:theme="@style/AppThemeEmergencyAction"
-             android:showWhenLocked="true"
-             android:turnScreenOn="true"
-             android:noHistory="true"
-             android:exported="false">
-        </activity>
+        <activity
+            android:name=".action.EmergencyActionActivity"
+            android:label="@string/emergency_action_title"
+            android:theme="@style/AppThemeEmergencyAction"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:exported="false"/>
 
         <provider android:name=".EmergencySearchIndexablesProvider"
              android:authorities="com.android.emergency"
