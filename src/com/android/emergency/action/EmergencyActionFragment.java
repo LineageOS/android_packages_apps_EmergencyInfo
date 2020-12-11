@@ -20,6 +20,7 @@ import static android.telecom.TelecomManager.EXTRA_CALL_SOURCE;
 
 import android.content.Context;
 import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -52,14 +53,18 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
     private static final String STATE_MILLIS_LEFT = "STATE_MILLIS_LEFT";
 
     private MediaPlayer mMediaPlayer;
+    private AudioManager mAudioManager;
     private TelecomManager mTelecomManager;
     private CountDownTimer mCountDownTimer;
     private EmergencyNumberUtils mEmergencyNumberUtils;
     private long mCountDownMillisLeft;
+    private int mUserSetAlarmVolume;
+    private boolean mResetAlarmVolumeNeeded;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        mAudioManager = context.getSystemService(AudioManager.class);
         mEmergencyNumberUtils = new EmergencyNumberUtils(context);
         mTelecomManager = context.getSystemService(TelecomManager.class);
     }
@@ -186,13 +191,39 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
                     return false;
                 });
 
+        setAlarmVolumeToFull();
         mMediaPlayer.start();
     }
 
     private void stopWarningSound() {
-        if (mMediaPlayer != null && mMediaPlayer.isPlaying()) {
-            mMediaPlayer.stop();
-            mMediaPlayer.release();
+        if (mMediaPlayer != null) {
+            try {
+                mMediaPlayer.stop();
+                mMediaPlayer.release();
+            } catch (IllegalStateException e) {
+                Log.w(TAG, "Exception when trying to stop media player");
+            }
+            mMediaPlayer = null;
+        }
+
+        resetAlarmVolume();
+    }
+
+    private void setAlarmVolumeToFull() {
+        int streamType = AudioManager.STREAM_ALARM;
+        mUserSetAlarmVolume = mAudioManager.getStreamVolume(streamType);
+        mResetAlarmVolumeNeeded = true;
+
+        Log.d(TAG, "Setting alarm volume from " + mUserSetAlarmVolume + "to full");
+        mAudioManager.setStreamVolume(streamType,
+                mAudioManager.getStreamMaxVolume(streamType), 0);
+    }
+
+    private void resetAlarmVolume() {
+        if (mResetAlarmVolumeNeeded) {
+            Log.d(TAG, "Resetting alarm volume to back to " + mUserSetAlarmVolume);
+            mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, mUserSetAlarmVolume, 0);
+            mResetAlarmVolumeNeeded = false;
         }
     }
 
