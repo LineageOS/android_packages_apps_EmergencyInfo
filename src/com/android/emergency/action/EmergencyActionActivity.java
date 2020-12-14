@@ -17,9 +17,9 @@
 package com.android.emergency.action;
 
 import android.annotation.Nullable;
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 
@@ -29,6 +29,8 @@ import com.android.emergency.R;
  * Activity for handling emergency action.
  */
 public class EmergencyActionActivity extends FragmentActivity {
+
+    private static final String TAG = "EmergencyAction";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,7 +50,10 @@ public class EmergencyActionActivity extends FragmentActivity {
             getSupportFragmentManager().beginTransaction().add(android.R.id.content,
                     albumFragment).commit();
         }
+    }
 
-
+    @Override
+    public void onBackPressed() {
+        Log.i(TAG, "Not responding to back press intentionally");
     }
 }
