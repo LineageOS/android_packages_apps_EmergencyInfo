@@ -18,7 +18,9 @@ package com.android.emergency.action;
 
 import static android.telecom.TelecomManager.EXTRA_CALL_SOURCE;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -60,6 +62,8 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
     private long mCountDownMillisLeft;
     private int mUserSetAlarmVolume;
     private boolean mResetAlarmVolumeNeeded;
+    private boolean mCountdownCancelled;
+    private boolean mCountdownFinished;
 
     @Override
     public void onAttach(Context context) {
@@ -84,8 +88,18 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
         if (savedInstanceState != null) {
             mCountDownMillisLeft = savedInstanceState.getLong(STATE_MILLIS_LEFT);
         } else {
-            mCountDownMillisLeft =
-                    getResources().getInteger(R.integer.emergency_action_count_down_millis);
+            Activity activity = getActivity();
+            Intent intent = null;
+            if (activity != null) {
+                intent = activity.getIntent();
+            }
+            if (intent != null) {
+                mCountDownMillisLeft = intent.getLongExtra(STATE_MILLIS_LEFT,
+                        getResources().getInteger(R.integer.emergency_action_count_down_millis));
+            } else {
+                mCountDownMillisLeft =
+                        getResources().getInteger(R.integer.emergency_action_count_down_millis);
+            }
         }
 
         return view;
@@ -116,10 +130,17 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
         }
 
         stopWarningSound();
+        if (!mCountdownCancelled && !mCountdownFinished) {
+            Log.d(TAG,
+                    "Emergency countdown UI dismissed without being cancelled/finished, "
+                            + "continuing countdown in background");
+            // TODO(b/172075832): Continue countdown in a foreground service.
+        }
     }
 
     @Override
     public void onSlideComplete() {
+        mCountdownCancelled = true;
         getActivity().finish();
     }
 
@@ -150,6 +171,7 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
 
                     @Override
                     public void onFinish() {
+                        mCountdownFinished = true;
                         startEmergencyCall();
                         getActivity().finish();
                     }
