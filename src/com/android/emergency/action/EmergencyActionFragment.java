@@ -42,6 +42,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.emergency.R;
+import com.android.emergency.action.service.EmergencyActionForegroundService;
 import com.android.emergency.widgets.countdown.CountDownAnimationView;
 import com.android.emergency.widgets.slider.OnSlideCompleteListener;
 import com.android.emergency.widgets.slider.SliderView;
@@ -68,6 +69,7 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        EmergencyActionForegroundService.stopService(context);
         mAudioManager = context.getSystemService(AudioManager.class);
         mEmergencyNumberUtils = new EmergencyNumberUtils(context);
         mTelecomManager = context.getSystemService(TelecomManager.class);
@@ -134,13 +136,18 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
             Log.d(TAG,
                     "Emergency countdown UI dismissed without being cancelled/finished, "
                             + "continuing countdown in background");
-            // TODO(b/172075832): Continue countdown in a foreground service.
+
+            Context context = getContext();
+            context.startService(
+                    EmergencyActionForegroundService.newStartCountdownIntent(context,
+                            mCountDownMillisLeft));
         }
     }
 
     @Override
     public void onSlideComplete() {
         mCountdownCancelled = true;
+        EmergencyActionForegroundService.stopService(getActivity());
         getActivity().finish();
     }
 

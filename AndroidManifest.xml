@@ -19,6 +19,8 @@
      package="com.android.emergency"
      android:sharedUserId="com.android.emergency.uid">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
@@ -165,6 +167,19 @@
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
                  android:resource="@xml/file_paths"/>
         </provider>
+
+        <service
+            android:name=".action.service.EmergencyActionForegroundService"
+            android:exported="false"/>
+
+        <receiver
+            android:name=".action.broadcast.EmergencyActionBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.emergency.broadcast.MAKE_EMERGENCY_CALL" />
+                <action android:name="com.android.emergency.broadcast.CANCEL_EMERGENCY_COUNTDOWN" />
+            </intent-filter>
+        </receiver>
 
     </application>
 
