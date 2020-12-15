@@ -22,14 +22,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.media.AudioAttributes;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.UserHandle;
-import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
@@ -44,6 +39,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.emergency.R;
+import com.android.emergency.action.sensoryfeedback.EmergencyActionAlarmHelper;
 import com.android.emergency.action.service.EmergencyActionForegroundService;
 import com.android.emergency.widgets.countdown.CountDownAnimationView;
 import com.android.emergency.widgets.slider.OnSlideCompleteListener;
@@ -57,14 +53,12 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
     private static final String TAG = "EmergencyActionFrag";
     private static final String STATE_MILLIS_LEFT = "STATE_MILLIS_LEFT";
 
-    private MediaPlayer mMediaPlayer;
-    private AudioManager mAudioManager;
+    private EmergencyActionAlarmHelper mEmergencyActionAlarmHelper;
     private TelecomManager mTelecomManager;
     private CountDownTimer mCountDownTimer;
     private EmergencyNumberUtils mEmergencyNumberUtils;
     private long mCountDownMillisLeft;
-    private int mUserSetAlarmVolume;
-    private boolean mResetAlarmVolumeNeeded;
+
     private boolean mCountdownCancelled;
     private boolean mCountdownFinished;
 
@@ -72,7 +66,7 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
     public void onAttach(Context context) {
         super.onAttach(context);
         EmergencyActionForegroundService.stopService(context);
-        mAudioManager = context.getSystemService(AudioManager.class);
+        mEmergencyActionAlarmHelper = new EmergencyActionAlarmHelper(context);
         mEmergencyNumberUtils = new EmergencyNumberUtils(context);
         mTelecomManager = context.getSystemService(TelecomManager.class);
     }
@@ -127,7 +121,7 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
     public void onStart() {
         super.onStart();
         startTimer();
-        playWarningSound();
+        mEmergencyActionAlarmHelper.playWarningSound();
     }
 
     @Override
@@ -147,7 +141,7 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
             mCountDownTimer.cancel();
         }
 
-        stopWarningSound();
+        mEmergencyActionAlarmHelper.stopWarningSound();
         if (!mCountdownCancelled && !mCountdownFinished) {
             Log.d(TAG,
                     "Emergency countdown UI dismissed without being cancelled/finished, "
@@ -155,8 +149,10 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
 
             Context context = getContext();
             context.startService(
-                    EmergencyActionForegroundService.newStartCountdownIntent(context,
-                            mCountDownMillisLeft));
+                    EmergencyActionForegroundService.newStartCountdownIntent(
+                            context,
+                            mCountDownMillisLeft,
+                            mEmergencyActionAlarmHelper.getUserSetAlarmVolume()));
         }
     }
 
@@ -206,71 +202,6 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
         countDownAnimationView.showCountDown();
     }
 
-    private boolean isPlayWarningSoundEnabled() {
-        return Settings.Secure.getIntForUser(getContext().getContentResolver(),
-                Settings.Secure.EMERGENCY_GESTURE_SOUND_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
-    }
-
-    private void playWarningSound() {
-        if (!isPlayWarningSoundEnabled()) {
-            return;
-        }
-
-        if (mMediaPlayer == null) {
-            mMediaPlayer = MediaPlayer.create(
-                    getContext(),
-                    R.raw.alarm,
-                    new AudioAttributes.Builder()
-                            .setUsage(AudioAttributes.USAGE_ALARM)
-                            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                            .build(),
-                    /* audioSessionId= */ 0);
-        }
-
-        mMediaPlayer.setOnCompletionListener(mp -> mp.release());
-        mMediaPlayer.setOnErrorListener(
-                (MediaPlayer mp, int what, int extra) -> {
-                    Log.w(TAG, "MediaPlayer playback failed with error code: " + what
-                            + ", and extra code: " + extra);
-                    mp.release();
-                    return false;
-                });
-
-        setAlarmVolumeToFull();
-        mMediaPlayer.start();
-    }
-
-    private void stopWarningSound() {
-        if (mMediaPlayer != null) {
-            try {
-                mMediaPlayer.stop();
-                mMediaPlayer.release();
-            } catch (IllegalStateException e) {
-                Log.w(TAG, "Exception when trying to stop media player");
-            }
-            mMediaPlayer = null;
-        }
-
-        resetAlarmVolume();
-    }
-
-    private void setAlarmVolumeToFull() {
-        int streamType = AudioManager.STREAM_ALARM;
-        mUserSetAlarmVolume = mAudioManager.getStreamVolume(streamType);
-        mResetAlarmVolumeNeeded = true;
-
-        Log.d(TAG, "Setting alarm volume from " + mUserSetAlarmVolume + "to full");
-        mAudioManager.setStreamVolume(streamType,
-                mAudioManager.getStreamMaxVolume(streamType), 0);
-    }
-
-    private void resetAlarmVolume() {
-        if (mResetAlarmVolumeNeeded) {
-            Log.d(TAG, "Resetting alarm volume to back to " + mUserSetAlarmVolume);
-            mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM, mUserSetAlarmVolume, 0);
-            mResetAlarmVolumeNeeded = false;
-        }
-    }
 
     private void startEmergencyCall() {
         Bundle extras = new Bundle();

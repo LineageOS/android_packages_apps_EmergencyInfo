@@ -36,6 +36,7 @@ import android.widget.RemoteViews;
 
 import com.android.emergency.R;
 import com.android.emergency.action.broadcast.EmergencyActionBroadcastReceiver;
+import com.android.emergency.action.sensoryfeedback.EmergencyActionAlarmHelper;
 import com.android.settingslib.emergencynumber.EmergencyNumberUtils;
 
 /**
@@ -47,6 +48,8 @@ public class EmergencyActionForegroundService extends Service {
     private static final String SERVICE_EXTRA_NOTIFICATION = "service.extra.notification";
     /** The remaining time in milliseconds before taking emergency action */
     private static final String SERVICE_EXTRA_REMAINING_TIME_MS = "service.extra.remaining_time_ms";
+    /** The alarm volume user setting before triggering this gesture */
+    private static final String SERVICE_EXTRA_ALARM_VOLUME = "service.extra.alarm_volume";
     /** Random unique number for the notification */
     private static final int COUNT_DOWN_NOTIFICATION_ID = 0x112;
 
@@ -54,6 +57,7 @@ public class EmergencyActionForegroundService extends Service {
     private Vibrator mVibrator;
     private EmergencyNumberUtils mEmergencyNumberUtils;
     private NotificationManager mNotificationManager;
+    private EmergencyActionAlarmHelper mAlarmHelper;
 
 
     @Override
@@ -61,11 +65,12 @@ public class EmergencyActionForegroundService extends Service {
         super.onCreate();
         PackageManager pm = getPackageManager();
         mVibrator = getSystemService(Vibrator.class);
+        mNotificationManager = getSystemService(NotificationManager.class);
         if (pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
             mTelecomManager = getSystemService(TelecomManager.class);
             mEmergencyNumberUtils = new EmergencyNumberUtils(this);
+            mAlarmHelper = new EmergencyActionAlarmHelper(this);
         }
-        mNotificationManager = getSystemService(NotificationManager.class);
     }
 
     @Override
@@ -92,7 +97,7 @@ public class EmergencyActionForegroundService extends Service {
         // TODO(b/175401642): Use correct vibrate pattern
         mVibrator.vibrate(
                 VibrationEffect.get(VibrationEffect.EFFECT_HEAVY_CLICK));
-        // TODO(b/172075832): sound
+        mAlarmHelper.playWarningSound();
 
         return START_NOT_STICKY;
     }
@@ -101,7 +106,8 @@ public class EmergencyActionForegroundService extends Service {
     public void onDestroy() {
         // Take notification down
         mNotificationManager.cancel(COUNT_DOWN_NOTIFICATION_ID);
-        // TODO(b/172075832): Stop sound
+        // Stop sound
+        mAlarmHelper.stopWarningSound();
         // Stop vibrate
         mVibrator.cancel();
         super.onDestroy();
@@ -117,9 +123,10 @@ public class EmergencyActionForegroundService extends Service {
      * action
      */
     public static Intent newStartCountdownIntent(
-            Context context, long remainingTimeMs) {
+            Context context, long remainingTimeMs, int userSetAlarmVolume) {
         return new Intent(context, EmergencyActionForegroundService.class)
                 .putExtra(SERVICE_EXTRA_REMAINING_TIME_MS, remainingTimeMs)
+                .putExtra(SERVICE_EXTRA_ALARM_VOLUME, userSetAlarmVolume)
                 .putExtra(SERVICE_EXTRA_NOTIFICATION,
                         buildCountDownNotification(context, remainingTimeMs));
     }
@@ -158,6 +165,7 @@ public class EmergencyActionForegroundService extends Service {
                 /* format= */ null,
                 /* started= */ true);
         return new Notification.Builder(context, channel.getId())
+                .setColor(context.getColor(R.color.emergency_primary))
                 .setSmallIcon(R.drawable.ic_launcher_settings)
                 .setStyle(new Notification.DecoratedCustomViewStyle())
                 .setAutoCancel(false)
