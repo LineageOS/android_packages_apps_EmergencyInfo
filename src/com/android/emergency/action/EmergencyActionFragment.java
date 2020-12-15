@@ -21,6 +21,7 @@ import static android.telecom.TelecomManager.EXTRA_CALL_SOURCE;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -32,6 +33,7 @@ import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,7 +78,21 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.emergency_action_fragment, container, false);
+
+        // Ignore the larger font scale if users set it in general system settings since we already
+        // have relatively large font size on this page, and we need to display all content on one
+        // page without scrolling.
+        Configuration configuration = getResources().getConfiguration();
+        if (configuration.fontScale > 1) {
+            configuration.fontScale = (float) 1;
+
+            DisplayMetrics metrics = new DisplayMetrics();
+            metrics.scaledDensity = configuration.fontScale * metrics.density;
+            configuration.densityDpi = (int) getResources().getDisplayMetrics().xdpi;
+        }
+
+        View view = inflater.cloneInContext(getContext().createConfigurationContext(configuration))
+                .inflate(R.layout.emergency_action_fragment, container, false);
 
         TextView subtitleView = view.findViewById(R.id.subtitle);
         subtitleView.setText(getString(R.string.emergency_action_subtitle,

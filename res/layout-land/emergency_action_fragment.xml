@@ -17,20 +17,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingVertical="48dp"
-    android:orientation="vertical"
+    android:paddingVertical="24dp"
+    android:orientation="horizontal"
     android:background="@android:color/black">
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
         android:layout_weight="1">
         <include layout="@layout/emergency_action_info_view"/>
     </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <include layout="@layout/emergency_action_cancel_view" />
-    </FrameLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+        <include layout="@layout/emergency_action_cancel_view"/>
+    </LinearLayout>
 </LinearLayout>

@@ -13,24 +13,11 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<LinearLayout
+<com.android.emergency.widgets.slider.SliderView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/btn_cancel"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingVertical="48dp"
-    android:orientation="vertical"
-    android:background="@android:color/black">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <include layout="@layout/emergency_action_info_view"/>
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <include layout="@layout/emergency_action_cancel_view" />
-    </FrameLayout>
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="48dp"
+    android:text="@string/cancel"
+    android:thumb="@drawable/slider_view_thumb_cancel"/>
