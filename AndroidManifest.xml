@@ -168,6 +168,11 @@
                  android:resource="@xml/file_paths"/>
         </provider>
 
+        <provider
+            android:name=".emergencynumber.EmergencyNumberContentProvider"
+            android:authorities="com.android.emergency.numbers"
+            android:permission="android.permission.CALL_PRIVILEGED"/>
+
         <service
             android:name=".action.service.EmergencyActionForegroundService"
             android:exported="false"/>
