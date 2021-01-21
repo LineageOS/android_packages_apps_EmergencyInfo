@@ -18,6 +18,7 @@ package com.android.emergency.action;
 
 import android.annotation.Nullable;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.WindowInsets;
@@ -31,12 +32,18 @@ import com.android.emergency.R;
 public class EmergencyActionActivity extends FragmentActivity {
 
     private static final String TAG = "EmergencyAction";
+    private static final int SETTING_ON = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.emergency_action_activity);
-
+        if (Settings.Secure.getInt(getContentResolver(),
+                Settings.Secure.EMERGENCY_GESTURE_ENABLED, SETTING_ON) != SETTING_ON) {
+            Log.w(TAG, "Emergency gesture is not enabled, exiting");
+            finish();
+            return;
+        }
         getWindow().setDecorFitsSystemWindows(false);
         WindowInsetsController controller = getWindow().getInsetsController();
         if (controller != null) {
