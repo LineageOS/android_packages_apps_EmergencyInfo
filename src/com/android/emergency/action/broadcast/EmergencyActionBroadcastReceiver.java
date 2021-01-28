@@ -49,14 +49,14 @@ public class EmergencyActionBroadcastReceiver extends BroadcastReceiver {
         return PendingIntent.getBroadcast(context, 0,
                 new Intent(ACTION_START_EMERGENCY_CALL).setClass(context,
                         EmergencyActionBroadcastReceiver.class),
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_IMMUTABLE);
     }
 
     public static PendingIntent newCancelCountdownPendingIntent(Context context) {
         return PendingIntent.getBroadcast(context, 0,
                 new Intent(ACTION_CANCEL_COUNTDOWN).setClass(context,
                         EmergencyActionBroadcastReceiver.class),
-                PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent.FLAG_IMMUTABLE);
     }
 
     @Override
