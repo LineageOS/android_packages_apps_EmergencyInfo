@@ -23,7 +23,8 @@ android_app {
     required: ["privapp_whitelist_com.android.emergency"],
     privileged: true,
     static_libs: [
-        "EmergencyInfo-lib"
+        "EmergencyInfo-lib",
+        "EmergencyGestureContentProvider",
     ],
     certificate: "platform",
 }
