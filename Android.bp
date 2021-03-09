@@ -49,6 +49,7 @@ android_library {
         "com.google.android.material_material",
         "androidx.transition_transition",
         "guava",
+        "EmergencyGestureAction",
     ],
     defaults: ["SettingsLibDefaults"],
 }
