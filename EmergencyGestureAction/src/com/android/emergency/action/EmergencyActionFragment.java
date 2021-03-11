@@ -16,17 +16,13 @@
 
 package com.android.emergency.action;
 
-import static android.telecom.TelecomManager.EXTRA_CALL_SOURCE;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
-import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -39,6 +35,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.emergency.R;
+import com.android.emergency.action.broadcast.EmergencyActionBroadcastReceiver;
 import com.android.emergency.action.sensoryfeedback.EmergencyActionAlarmHelper;
 import com.android.emergency.action.service.EmergencyActionForegroundService;
 import com.android.emergency.widgets.countdown.CountDownAnimationView;
@@ -191,8 +188,12 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
                     @Override
                     public void onFinish() {
                         mCountdownFinished = true;
-                        startEmergencyCall();
-                        getActivity().finish();
+                        Intent broadcast =
+                                EmergencyActionBroadcastReceiver.newCallEmergencyIntent(
+                                        getContext());
+                        Activity activity = getActivity();
+                        activity.sendBroadcast(broadcast);
+                        activity.finish();
                     }
                 };
 
@@ -200,16 +201,5 @@ public class EmergencyActionFragment extends Fragment implements OnSlideComplete
 
         countDownAnimationView.start(Duration.ofMillis(mCountDownMillisLeft));
         countDownAnimationView.showCountDown();
-    }
-
-
-    private void startEmergencyCall() {
-        Bundle extras = new Bundle();
-        extras.putBoolean(TelecomManager.EXTRA_IS_USER_INTENT_EMERGENCY_CALL, true);
-        extras.putInt(EXTRA_CALL_SOURCE, TelecomManager.CALL_SOURCE_EMERGENCY_SHORTCUT);
-
-        mTelecomManager.placeCall(
-                Uri.fromParts(PhoneAccount.SCHEME_TEL, mEmergencyNumberUtils.getPoliceNumber(),
-                        null), extras);
     }
 }
