@@ -35,6 +35,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Binder;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -50,6 +51,7 @@ public class EmergencyGestureContentProvider extends ContentProvider {
 
     @Override
     public Bundle call(String authority, String method, String arg, Bundle extras) {
+        Log.d(TAG, "calling pid/uid" + Binder.getCallingPid() + "/" + Binder.getCallingUid());
         final Bundle bundle = new Bundle();
         final SharedPreferences preferences = getContext().getSharedPreferences(
                 SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
