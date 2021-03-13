@@ -110,9 +110,4 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"انتخاب تصویر"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"انتخاب عکس"</string>
     <string name="user_nickname" msgid="7956055372443961161">"نام مستعار"</string>
-    <string name="emergency_action_title" msgid="941929443439145491">"کمک اضطراری"</string>
-    <string name="emergency_action_subtitle" msgid="4100458927956443688">"آرامشتان را حفظ کنید. درحال برقراری تماس با <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> هستیم."</string>
-    <string name="count_down_unit" msgid="7564524705923795574">"ث"</string>
-    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{۱ ثانیه}one{# ثانیه}other{# ثانیه}}"</string>
-    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"برای فعال‌سازی، دو انگشت را روی صفحه بلغزانید"</string>
 </resources>
