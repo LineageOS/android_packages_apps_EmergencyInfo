@@ -110,9 +110,4 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"এখন প্ৰতিচ্ছবি বাছনি কৰক"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"ফট\' বাছনি কৰক"</string>
     <string name="user_nickname" msgid="7956055372443961161">"উপনাম"</string>
-    <string name="emergency_action_title" msgid="941929443439145491">"জৰুৰীকালীন SOS"</string>
-    <string name="emergency_action_subtitle" msgid="4100458927956443688">"শান্ত হৈ থাকক। আপোনাৰ বাবে <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>লৈ এটা কল আৰম্ভ কৰা হৈছে।"</string>
-    <string name="count_down_unit" msgid="7564524705923795574">"ছে"</string>
-    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{১ ছেকেণ্ড}one{# ছেকেণ্ড}other{# ছেকেণ্ড}}"</string>
-    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"সক্ৰিয় কৰিবলৈ দুটা আঙুলিৰে শ্লাইড কৰক"</string>
 </resources>
