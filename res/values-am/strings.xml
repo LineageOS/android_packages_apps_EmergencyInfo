@@ -110,9 +110,4 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"ምስል ይምረጡ"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"ፎቶ ይምረጡ"</string>
     <string name="user_nickname" msgid="7956055372443961161">"ቅጽል ስም"</string>
-    <string name="emergency_action_title" msgid="941929443439145491">"ድንገተኛ አደጋ ኤስኦኤስ"</string>
-    <string name="emergency_action_subtitle" msgid="4100458927956443688">"ይረጋጉ። ለእርስዎ ወደ <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> ጥሪን በመጀመር ላይ።"</string>
-    <string name="count_down_unit" msgid="7564524705923795574">"ሴ"</string>
-    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 ሰከንድ}one{# ሰከንድ}other{# ሰከንዶች}}"</string>
-    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"ለማንቃት በሁለት ጣቶች ያንሸራትቱ"</string>
 </resources>

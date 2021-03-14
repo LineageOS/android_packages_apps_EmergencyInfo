@@ -110,9 +110,4 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"Seleccionar una imagen"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Selecciona la foto"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Apodo"</string>
-    <string name="emergency_action_title" msgid="941929443439145491">"SOS de emergencia"</string>
-    <string name="emergency_action_subtitle" msgid="4100458927956443688">"Mantén la calma. Vamos a llamar al <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>."</string>
-    <string name="count_down_unit" msgid="7564524705923795574">"s"</string>
-    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 segundo}other{# segundos}}"</string>
-    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"Mueve el control deslizante con dos dedos para activarlo"</string>
 </resources>
