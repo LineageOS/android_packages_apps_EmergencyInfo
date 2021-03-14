@@ -110,9 +110,4 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"ပုံရွေးရန်"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"ဓာတ်ပုံ ရွေးရန်"</string>
     <string name="user_nickname" msgid="7956055372443961161">"အမည်ပြောင်"</string>
-    <string name="emergency_action_title" msgid="941929443439145491">"အရေးပေါ် SOS"</string>
-    <string name="emergency_action_subtitle" msgid="4100458927956443688">"စိတ်အေးအေးထားပါ။ သင့်အတွက် <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> ကို ဖုန်းခေါ်ဆိုခြင်း စတင်နေသည်။"</string>
-    <string name="count_down_unit" msgid="7564524705923795574">"s"</string>
-    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 စက္ကန့်}other{# စက္ကန့်}}"</string>
-    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"စသုံးရန် လက်နှစ်ချောင်းနှင့် ဘေးတိုက်ပွတ်ဆွဲပါ"</string>
 </resources>
