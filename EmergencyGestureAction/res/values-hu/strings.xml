@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="cancel" msgid="1942863792086990604">"Mégse"</string>
-    <string name="emergency_action_title" msgid="4329795972111990414">"Vészhelyzet – SOS"</string>
+    <string name="emergency_action_title" msgid="4329795972111990414">"Segélyhívás"</string>
     <string name="emergency_action_subtitle" msgid="8290952869293991564">"Őrizze meg nyugalmát. A rendszer felhívja a segélyhívó számot (<xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>)."</string>
     <string name="count_down_unit" msgid="7461042666268976220">"mp"</string>
     <string name="countdown_text_content_description" msgid="322778383478285712">"{seconds_left,plural, =1{1 másodperc}other{# másodperc}}"</string>
