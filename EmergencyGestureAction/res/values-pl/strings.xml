@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="cancel" msgid="1942863792086990604">"Anuluj"</string>
-    <string name="emergency_action_title" msgid="4329795972111990414">"Sygnał SOS"</string>
+    <string name="emergency_action_title" msgid="4329795972111990414">"Połączenie alarmowe"</string>
     <string name="emergency_action_subtitle" msgid="8290952869293991564">"Zachowaj spokój. Dzwonię w Twoim imieniu pod numer <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>."</string>
     <string name="count_down_unit" msgid="7461042666268976220">"s"</string>
     <string name="countdown_text_content_description" msgid="322778383478285712">"{seconds_left,plural, =1{1 sekunda}few{# sekundy}many{# sekund}other{# sekundy}}"</string>
