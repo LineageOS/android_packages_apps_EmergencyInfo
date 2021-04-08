@@ -20,7 +20,7 @@
     <!-- Title for the emergency action view. This is the view which will be launched when the user looks for help from their device. [CHAR LIMIT=25]-->
     <string name="emergency_action_title">Emergency SOS</string>
     <!-- Subtitle for the emergency action view. This is the view which will be launched when the user looks for help from their device. [CHAR LIMIT=NONE]-->
-    <string name="emergency_action_subtitle">Stay calm.  Starting a call to <xliff:g id="emergency_number" example="911">%1$s</xliff:g> for you.</string>
+    <string name="emergency_action_subtitle">Preparing a call to <xliff:g id="emergency_number" example="911">%1$s</xliff:g></string>
     <!-- The abbreviation of time unit "second". [CHAR LIMIT=NONE]-->
     <string name="count_down_unit">s</string>
     <!-- Content description for the countdown timer to indicate the remaining time (in seconds) [CHAR_LIMIT=NONE] -->
