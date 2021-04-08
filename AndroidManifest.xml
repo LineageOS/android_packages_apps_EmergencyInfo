@@ -114,6 +114,38 @@
                  android:resource="@drawable/ic_local_hospital_24dp"/>
         </activity-alias>
 
+        <!-- Injected setting to edit emergency contact & medical info -->
+        <activity-alias
+            android:name="EmergencyInfoActivity"
+            android:targetActivity=".edit.EditInfoActivity"
+            android:icon="@drawable/ic_emergency_contacts_24dp"
+            android:label="@string/app_label"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.emergency" />
+            <meta-data
+                android:name="com.android.settings.order"
+                android:value="60" />
+            <meta-data
+                android:name="com.android.settings.icon"
+                android:resource="@drawable/ic_emergency_contacts_24dp"/>
+            <meta-data
+                android:name="com.android.settings.icon_tintable"
+                android:value="true" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/injection_summary_empty"/>
+            <meta-data
+                android:name="com.android.settings.profile"
+                android:value="primary_profile_only" />
+        </activity-alias>
+
         <activity android:name=".edit.EditMedicalInfoActivity"
              android:icon="@drawable/ic_launcher_settings"
              android:label="@string/medical_info_title"
