@@ -17,7 +17,7 @@
     <color name="emergency_primary">#D93025</color>
     <color name="primary_dark_color">@color/material_grey_300</color>
 
-    <color name="emergency_action_accent">#F28B82</color>
+    <color name="emergency_action_title_color">#FFFFFF</color>
     <color name="emergency_action_subtitle_color">#FFFFFF</color>
 
     <color name="slider_track_background_color">#333333</color>
