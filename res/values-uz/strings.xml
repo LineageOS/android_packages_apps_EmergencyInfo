@@ -88,7 +88,7 @@
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"Favqulodda holatlar uchun kontaktlar"</string>
-    <string name="add_emergency_contact" msgid="4063577069613981029">"Kontakt saqlash"</string>
+    <string name="add_emergency_contact" msgid="4063577069613981029">"Kontaktni saqlash"</string>
     <string name="fail_load_contact_picker" msgid="817205483833876726">"Kontakt tanlash vositasini topib bo‘lmadi"</string>
     <string name="fail_display_contact" msgid="4128854688897045879">"Kontaktni ko‘rsatib bo‘lmadi"</string>
     <string name="remove_contact" msgid="6934983445723096759">"<xliff:g id="CONTACT_NAME">%1$s</xliff:g> favqulodda holatlar uchun kontaktlardan olib tashlansinmi?"</string>
@@ -105,7 +105,7 @@
     <string name="clear_all_message" msgid="1548432000373861295">"Barcha kontaktlar va ma’lumotlar o‘chirib tashlansinmi?"</string>
     <string name="emergency_info_footer" msgid="8751758742506410146">"Favqulodda holatlar uchun tibbiy axborotlaringizni hamda favqulodda kontaktingizni kiritishni tavsiya qilamiz.\n\nBu axborotlar qulflangan ekran ustida hamma koʻrinadi. Telefon qilish uchun favqulodda kontakt ustiga bosish kifoya."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Favqulodda vaziyatlar uchun axborot kiriting"</string>
-    <string name="settings_suggestion_body" msgid="5559349261345837716">"Birinchi yordam uchun ma’lumotlaringizni taqdim eting"</string>
+    <string name="settings_suggestion_body" msgid="5559349261345837716">"Birinchi yordam uchun axborot kiriting"</string>
     <string name="user_image_take_photo" msgid="2779924488370750102">"Suratga olish"</string>
     <string name="user_image_choose_photo" msgid="2442095378052415700">"Rasm tanlash"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Surat tanlang"</string>
