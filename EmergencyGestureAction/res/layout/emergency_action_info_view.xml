@@ -24,11 +24,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="40dp"
         android:text="@string/emergency_action_title"
         android:fontFamily="sans-serif"
-        android:textSize="24sp"
-        android:lineHeight="32dp"
-        android:textColor="@color/emergency_action_accent"
+        android:textSize="32sp"
+        android:lineHeight="40dp"
+        android:textColor="@color/emergency_action_title_color"
         android:textAlignment="center"/>
 
     <TextView
