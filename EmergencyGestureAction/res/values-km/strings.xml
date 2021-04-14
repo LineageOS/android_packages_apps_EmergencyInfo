@@ -19,7 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="cancel" msgid="1942863792086990604">"បោះបង់"</string>
     <string name="emergency_action_title" msgid="4329795972111990414">"SOS ពេលមានអាសន្ន"</string>
-    <string name="emergency_action_subtitle" msgid="8290952869293991564">"សូមរក្សាចិត្តឱ្យស្ងប់។ កំពុងចាប់ផ្ដើម​ការហៅទូរសព្ទទៅ <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> សម្រាប់អ្នក។"</string>
+    <string name="emergency_action_subtitle" msgid="5667616628096114616">"កំពុងរៀបចំ​ការហៅទូរសព្ទ​ទៅលេខ <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>"</string>
     <string name="count_down_unit" msgid="7461042666268976220">"វិ"</string>
     <string name="countdown_text_content_description" msgid="322778383478285712">"{seconds_left,plural, =1{1 វិនាទី}other{# វិនាទី}}"</string>
     <string name="slider_seek_bar_content_description" msgid="811285658152645524">"អូស​ដោយប្រើម្រាមដៃពីរ ដើម្បី​បើកដំណើរការ"</string>

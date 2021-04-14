@@ -19,7 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="cancel" msgid="1942863792086990604">"റദ്ദാക്കുക"</string>
     <string name="emergency_action_title" msgid="4329795972111990414">"എമർജൻസി SOS"</string>
-    <string name="emergency_action_subtitle" msgid="8290952869293991564">"ശാന്തമായിരിക്കൂ. നിങ്ങൾക്കായി <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> എന്ന നമ്പറിലേക്ക് കോൾ ചെയ്യുകയാണ്."</string>
+    <string name="emergency_action_subtitle" msgid="5667616628096114616">"<xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> എന്ന നമ്പറിലേക്ക് വിളിക്കുന്നു"</string>
     <string name="count_down_unit" msgid="7461042666268976220">"സെക്കൻഡ്"</string>
     <string name="countdown_text_content_description" msgid="322778383478285712">"{seconds_left,plural, =1{ഒരു സെക്കൻഡ്}other{# സെക്കൻഡ്}}"</string>
     <string name="slider_seek_bar_content_description" msgid="811285658152645524">"സജീവമാക്കാൻ രണ്ട് വിരലുകൾ ഉപയോഗിച്ച് സ്ലൈഡ് ചെയ്യുക"</string>
