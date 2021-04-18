@@ -19,7 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="cancel" msgid="1942863792086990604">"취소"</string>
     <string name="emergency_action_title" msgid="4329795972111990414">"긴급 SOS"</string>
-    <string name="emergency_action_subtitle" msgid="8290952869293991564">"침착하게 기다려 주세요. <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>번으로 전화를 겁니다"</string>
+    <string name="emergency_action_subtitle" msgid="5667616628096114616">"<xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>번에 전화 걸 준비 중"</string>
     <string name="count_down_unit" msgid="7461042666268976220">"초"</string>
     <string name="countdown_text_content_description" msgid="322778383478285712">"{seconds_left,plural, =1{1초}other{#초}}"</string>
     <string name="slider_seek_bar_content_description" msgid="811285658152645524">"두 손가락으로 슬라이드하여 활성화합니다."</string>
