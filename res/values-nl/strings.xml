@@ -99,11 +99,11 @@
     <string name="ok" msgid="163967937451981024">"OK"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="no_info_provided" msgid="716200382010821001">"Geen informatie over de eigenaar van de telefoon"</string>
-    <string name="tap_pencil" msgid="2723698054265296934">"Als dit je telefoon is, tik je op het potloodpictogram om informatie toe te voegen die hier wordt weergegeven in geval van nood"</string>
+    <string name="tap_pencil" msgid="2723698054265296934">"Als dit je telefoon is, tik je op het potloodje om informatie toe te voegen die in geval van nood hier zichtbaar is"</string>
     <string name="clear_all" msgid="8899013032870561633">"Alles wissen"</string>
     <string name="clear" msgid="3648880442502887163">"Wissen"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Alle informatie en contacten wissen?"</string>
-    <string name="emergency_info_footer" msgid="8751758742506410146">"Als je medische informatie en noodcontacten toevoegt, kan dit eerstehulpverleners helpen tijdens een noodgeval.\n\nIedereen kan deze informatie op je vergrendelingsscherm lezen en je contacten bellen door op hun namen te tikken zonder je telefoon te ontgrendelen."</string>
+    <string name="emergency_info_footer" msgid="8751758742506410146">"Als je medische informatie en noodcontacten toevoegt, kan dit eerstehulpverleners helpen tijdens een noodgeval.\n\nIedereen kan deze informatie op je vergrendelscherm lezen en je contacten bellen door op hun namen te tikken zonder je telefoon te ontgrendelen."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Noodinformatie toevoegen"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"Laat hulpdiensten je gegevens bekijken"</string>
     <string name="user_image_take_photo" msgid="2779924488370750102">"Een foto maken"</string>

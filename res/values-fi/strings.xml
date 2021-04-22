@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="1090682794607161063">"Hätätilannetiedot"</string>
+    <string name="app_label" msgid="1090682794607161063">"Vaaratiedot"</string>
     <string name="medical_info_title" msgid="3000192781136934887">"Lääke- ja terveystiedot"</string>
     <string name="add_medical_info" msgid="483921612415907139">"Tietojen lisääminen"</string>
     <string name="edit_info" msgid="5973929805855224805">"Muokkaa hätätilannetietoja"</string>
@@ -95,7 +95,7 @@
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"Poista yhteystieto"</string>
     <string name="fail_add_contact" msgid="6511490846952942291">"Yhteystietojen lukeminen ei onnistu."</string>
     <string name="remove" msgid="1243949503772376064">"Poista"</string>
-    <string name="cancel" msgid="7401575239009060939">"Peruuta"</string>
+    <string name="cancel" msgid="7401575239009060939">"Peru"</string>
     <string name="ok" msgid="163967937451981024">"Ok"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="no_info_provided" msgid="716200382010821001">"Ei tietoja puhelimen omistajasta"</string>
