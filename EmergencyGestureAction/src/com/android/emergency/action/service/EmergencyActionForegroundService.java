@@ -53,6 +53,11 @@ public class EmergencyActionForegroundService extends Service {
     /** Random unique number for the notification */
     private static final int COUNT_DOWN_NOTIFICATION_ID = 0x112;
 
+    private static final long[] TIMINGS = new long[]{200, 20, 20, 20, 20, 100, 20, 600};
+    private static final int[] AMPLITUDES = new int[]{0, 39, 82, 139, 213, 0, 127, 0};
+    private static final VibrationEffect VIBRATION_EFFECT =
+            VibrationEffect.createWaveform(TIMINGS, AMPLITUDES, /*repeat=*/ -1);
+
     private TelecomManager mTelecomManager;
     private Vibrator mVibrator;
     private EmergencyNumberUtils mEmergencyNumberUtils;
@@ -94,9 +99,7 @@ public class EmergencyActionForegroundService extends Service {
         startForeground(COUNT_DOWN_NOTIFICATION_ID, notification);
         scheduleEmergencyCallBroadcast(remainingTimeMs);
         // vibration
-        // TODO(b/175401642): Use correct vibrate pattern
-        mVibrator.vibrate(
-                VibrationEffect.get(VibrationEffect.EFFECT_HEAVY_CLICK));
+        mVibrator.vibrate(VIBRATION_EFFECT);
         mAlarmHelper.playWarningSound();
 
         return START_NOT_STICKY;
