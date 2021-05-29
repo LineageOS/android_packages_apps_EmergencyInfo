@@ -36,6 +36,7 @@
                         android:label="@string/emergency_action_title"
                         android:targetActivity=".action.EmergencyActionActivity"
                         android:permission="android.permission.MANAGE_SENSOR_PRIVACY"
+                        android:directBootAware="true"
                         android:enabled="true"
                         android:exported="true">
 
@@ -49,6 +50,7 @@
             android:name=".action.EmergencyActionActivity"
             android:label="@string/emergency_action_title"
             android:theme="@style/AppThemeEmergencyAction"
+            android:directBootAware="true"
             android:showWhenLocked="true"
             android:turnScreenOn="true"
             android:noHistory="true"
@@ -57,6 +59,7 @@
 
         <service
             android:name=".action.service.EmergencyActionForegroundService"
+            android:directBootAware="true"
             android:exported="false"/>
 
         <receiver
