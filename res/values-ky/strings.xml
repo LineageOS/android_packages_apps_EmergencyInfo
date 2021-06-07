@@ -94,7 +94,7 @@
     <string name="remove_contact" msgid="6934983445723096759">"Өзгөчө кырдаал байланыштарынан <xliff:g id="CONTACT_NAME">%1$s</xliff:g> өчүрөсүзбү?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"Байланышты алып салуу"</string>
     <string name="fail_add_contact" msgid="6511490846952942291">"Байланыш маалыматы туура окулбай жатат"</string>
-    <string name="remove" msgid="1243949503772376064">"Алып салуу"</string>
+    <string name="remove" msgid="1243949503772376064">"Өчүрүү"</string>
     <string name="cancel" msgid="7401575239009060939">"Жок"</string>
     <string name="ok" msgid="163967937451981024">"Жарайт"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
@@ -110,9 +110,4 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"Сүрөт тандоо"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Сүрөт тандоо"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Ылакап аты"</string>
-    <string name="emergency_action_title" msgid="941929443439145491">"Шашылыш SOS"</string>
-    <string name="emergency_action_subtitle" msgid="4100458927956443688">"Кабатыр болбоңуз. <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> номерине чалуу башталууда."</string>
-    <string name="count_down_unit" msgid="7564524705923795574">"с"</string>
-    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 секунд}other{# секунд}}"</string>
-    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"Иштетүү үчүн эки манжа менен сүрүңүз"</string>
 </resources>

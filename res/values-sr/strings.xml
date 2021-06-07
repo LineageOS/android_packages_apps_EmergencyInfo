@@ -110,9 +110,4 @@
     <string name="user_image_choose_photo" msgid="2442095378052415700">"Одаберите слику"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Изаберите слику"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Надимак"</string>
-    <string name="emergency_action_title" msgid="941929443439145491">"Хитни случајеви"</string>
-    <string name="emergency_action_subtitle" msgid="4100458927956443688">"Останите мирни. Позива се број <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> за вас."</string>
-    <string name="count_down_unit" msgid="7564524705923795574">"сек"</string>
-    <string name="countdown_text_content_description" msgid="4999365354802361081">"{seconds_left,plural, =1{1 секунда}one{# секунда}few{# секунде}other{# секунди}}"</string>
-    <string name="slider_seek_bar_content_description" msgid="4214098398592724787">"Превуците са два прста да бисте активирали"</string>
 </resources>
