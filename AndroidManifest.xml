@@ -15,14 +15,21 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
      package="com.android.emergency"
      android:sharedUserId="com.android.emergency.uid">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.START_ACTIVITIES_FROM_BACKGROUND" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.CALL_PRIVILEGED"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.MANAGE_USERS"/>
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
 
     <uses-sdk android:minSdkVersion="21"/>
 
@@ -42,7 +49,9 @@
          android:icon="@mipmap/ic_local_hospital_24dp"
          android:directBootAware="true"
          android:label="@string/app_label"
-         android:supportsRtl="true">
+         android:supportsRtl="true"
+         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+         tools:replace="android:appComponentFactory">
         <activity android:name=".view.ViewInfoActivity"
              android:theme="@style/AppThemeEmergency"
              android:taskAffinity="com.android.settings"
@@ -104,6 +113,38 @@
                  android:resource="@drawable/ic_local_hospital_24dp"/>
         </activity-alias>
 
+        <!-- Injected setting to edit emergency contact & medical info -->
+        <activity-alias
+            android:name="EmergencyInfoActivity"
+            android:targetActivity=".edit.EditInfoActivity"
+            android:icon="@drawable/ic_emergency_contacts_24dp"
+            android:label="@string/app_label"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.emergency" />
+            <meta-data
+                android:name="com.android.settings.order"
+                android:value="60" />
+            <meta-data
+                android:name="com.android.settings.icon"
+                android:resource="@drawable/ic_emergency_contacts_24dp"/>
+            <meta-data
+                android:name="com.android.settings.icon_tintable"
+                android:value="true" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/injection_summary_empty"/>
+            <meta-data
+                android:name="com.android.settings.profile"
+                android:value="primary_profile_only" />
+        </activity-alias>
+
         <activity android:name=".edit.EditMedicalInfoActivity"
              android:icon="@drawable/ic_launcher_settings"
              android:label="@string/medical_info_title"
@@ -136,6 +177,11 @@
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
                  android:resource="@xml/file_paths"/>
         </provider>
+
+        <provider
+            android:name=".EmergencyGestureContentProvider"
+            android:authorities="com.android.emergency.gesture"
+            android:permission="android.permission.CALL_PRIVILEGED"/>
 
     </application>
 
