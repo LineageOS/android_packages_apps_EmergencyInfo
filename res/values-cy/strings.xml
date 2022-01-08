@@ -54,6 +54,18 @@
         <item>@string/hh</item>
         <item>@string/unknown_blood_type</item>
     </string-array>
+    <string-array name="blood_type_values">
+        <item>0+</item>
+        <item>O-</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>H/H</item>
+        <item/>
+    </string-array>
     <string-array name="blood_type_content_description">
         <item>@string/o_positive</item>
         <item>@string/o_negative</item>
@@ -92,6 +104,11 @@
         <item>@string/yes</item>
         <item>@string/no</item>
         <item>@string/unknown_organ_donor</item>
+    </string-array>
+    <string-array name="organ_donor_values">
+        <item>Ydw</item>
+        <item>Nac ydw</item>
+        <item/>
     </string-array>
     <string name="emergency_contacts_title">Cysylltiadau mewn argyfwng</string>
     <string name="add_emergency_contact">Ychwanegu cyswllt</string>
