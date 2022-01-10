@@ -19,7 +19,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="cancel" msgid="1942863792086990604">"Annuleren"</string>
     <string name="emergency_action_title" msgid="4329795972111990414">"SOS"</string>
-    <string name="emergency_action_subtitle" msgid="5667616628096114616">"Er wordt een gesprek met <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> voorbereid"</string>
+    <string name="emergency_action_subtitle" msgid="5667616628096114616">"Gesprek met <xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g> wordt voorbereid"</string>
     <string name="count_down_unit" msgid="7461042666268976220">"s"</string>
     <string name="countdown_text_content_description" msgid="322778383478285712">"{seconds_left,plural, =1{1 seconde}other{# seconden}}"</string>
     <string name="slider_seek_bar_content_description" msgid="811285658152645524">"Schuif met 2 vingers om te activeren"</string>
