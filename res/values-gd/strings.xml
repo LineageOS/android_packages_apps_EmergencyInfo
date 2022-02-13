@@ -15,6 +15,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label">Fiosrachadh èiginn</string>
+    <string name="medical_info_title">Fiosrachadh meadaigeach</string>
     <string name="add_medical_info">Cuir fiosrachadh ris</string>
     <string name="edit_info">Deasaich am fiosrachadh èiginn</string>
     <string name="tab_title_info">Fiosrachadh</string>
@@ -82,9 +83,12 @@
     </string-array>
     <string name="emergency_contacts_title">Luchd-aithne èiginn</string>
     <string name="add_emergency_contact">Cuir neach-aithne ris</string>
+    <string name="fail_load_contact_picker">Cha b’ urrainn dhuinn roghnaichear luchd-aithne a lorg</string>
+    <string name="fail_display_contact">Chan urrainn dhuinn an neach-aithne a shealltainn dhut</string>
     <string name="remove_contact">        An doir thu <xliff:g id="contact_name" example="John Doe">%1$s</xliff:g> air falbh on luchd-aithne èiginn?
     </string>
     <string name="remove_contact_icon_text">Thoir air falbh an neach-aithne</string>
+    <string name="fail_add_contact">Chan urrainn dhuinn am fiosrachadh conaltraidh a leughadh mar bu chòir</string>
     <string name="remove">Thoir air falbh</string>
     <string name="cancel">Sguir dheth</string>
     <string name="ok">Ceart ma-thà</string>
@@ -95,7 +99,9 @@
     <string name="clear_all">Falamhaich na h-uile</string>
     <string name="clear">Falamhaich</string>
     <string name="clear_all_message">Am falmhaich thu a h-uile fiosrachadh is neach-aithne?</string>
-    <string name="settings_suggestion_body">Ceadaich dhan luchd-cobharach coimhead air an fhiosrachadh agad</string>
+    <string name="emergency_info_footer">Dh’fhaoidte gun cuidich am fiosrachadh meidigeach is luchd-aithne èiginn a chuireas tu a-steach an-seo an luchd-èiginn nuair a thig èiginn ort.\n\n ’S urrainn dho dhuine sam bith am fiosrachadh seo a leughadh agus fòn a chur dhan luchd-aithne èiginn agad le gnogag air an ainmean ’s cha leig iad leas a’ ghlas a thoirt far an fhòn agad.</string>
+    <string name="settings_suggestion_title">Cuir fiosrachadh èiginn ris</string>
+    <string name="settings_suggestion_body">Leig le luchd-cobharach coimhead air fiosrachadh</string>
     <string name="user_image_take_photo">Tog dealbh</string>
     <string name="user_image_choose_photo">Tagh dealbh on ghailearaidh</string>
     <string name="user_image_photo_selector">Tagh dealbh</string>
