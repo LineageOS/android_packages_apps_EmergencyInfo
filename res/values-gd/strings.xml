@@ -101,7 +101,7 @@
     <string name="clear_all_message">Am falmhaich thu a h-uile fiosrachadh is neach-aithne?</string>
     <string name="emergency_info_footer">Dh’fhaoidte gun cuidich am fiosrachadh meidigeach is luchd-aithne èiginn a chuireas tu a-steach an-seo an luchd-èiginn nuair a thig èiginn ort.\n\n ’S urrainn dho dhuine sam bith am fiosrachadh seo a leughadh agus fòn a chur dhan luchd-aithne èiginn agad le gnogag air an ainmean ’s cha leig iad leas a’ ghlas a thoirt far an fhòn agad.</string>
     <string name="settings_suggestion_title">Cuir fiosrachadh èiginn ris</string>
-    <string name="settings_suggestion_body">Ceadaich dhan luchd-cobharach coimhead air an fhiosrachadh agad</string>
+    <string name="settings_suggestion_body">Leig le luchd-cobharach coimhead air fiosrachadh</string>
     <string name="user_image_take_photo">Tog dealbh</string>
     <string name="user_image_choose_photo">Tagh dealbh</string>
     <string name="user_image_photo_selector">Tagh dealbh</string>
