@@ -18,7 +18,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="cancel" msgid="1942863792086990604">"Utzi"</string>
-    <string name="emergency_action_title" msgid="4329795972111990414">"Larrialdia"</string>
+    <string name="emergency_action_title" msgid="4329795972111990414">"SOS larrialdia"</string>
     <string name="emergency_action_subtitle" msgid="5667616628096114616">"Larrialdi-zerbitzuetara (<xliff:g id="EMERGENCY_NUMBER">%1$s</xliff:g>) deitzeko prestatzen ari gara"</string>
     <string name="count_down_unit" msgid="7461042666268976220">"s"</string>
     <string name="countdown_text_content_description" msgid="322778383478285712">"{seconds_left,plural, =1{1 segundo}other{# segundo}}"</string>
