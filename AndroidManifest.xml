@@ -45,7 +45,7 @@
     </queries>
 
     <application android:defaultToDeviceProtectedStorage="true"
-         android:icon="@mipmap/ic_local_hospital_24dp"
+         android:icon="@mipmap/ic_launcher"
          android:directBootAware="true"
          android:label="@string/app_label"
          android:supportsRtl="true"
