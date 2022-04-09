@@ -99,7 +99,8 @@
     <string name="ok" msgid="163967937451981024">"ठीक है"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="no_info_provided" msgid="716200382010821001">"ये जिसका फ़ोन है उसके बारे में कोई जानकारी नहीं है"</string>
-    <string name="tap_pencil" msgid="2723698054265296934">"अगर यह आपका फ़ोन है, तो आपका ब्लड ग्रुप या किसी परिचित के फ़ोन नंबर जैसी जानकारी जोड़ने के लिए पेंसिल आइकॉन को छूएं. यह जानकारी मुसीबत के समय दिखाई देगी."</string>
+    <!-- no translation found for tap_pencil (3429817710241457947) -->
+    <skip />
     <string name="clear_all" msgid="8899013032870561633">"सभी साफ़ करें"</string>
     <string name="clear" msgid="3648880442502887163">"साफ़ करें"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"सभी जानकारी और संपर्क साफ़ करें?"</string>
