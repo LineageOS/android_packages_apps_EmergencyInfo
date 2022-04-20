@@ -21,7 +21,7 @@
     <string name="add_medical_info" msgid="483921612415907139">"Мэдээлэл нэмэх"</string>
     <string name="edit_info" msgid="5973929805855224805">"Яаралтай тусламжийн мэдээллийг өөрчлөх"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Мэдээлэл"</string>
-    <string name="tab_title_contacts" msgid="4298341166404791209">"Харилцагчийн хаяг"</string>
+    <string name="tab_title_contacts" msgid="4298341166404791209">"Харилцагчид"</string>
     <string name="name" msgid="4286267457738861977">"Нэр"</string>
     <string name="unknown_name" msgid="2834802479170495056">"Тодорхойгүй"</string>
     <string name="address" msgid="6449303483151189969">"Хаяг"</string>
