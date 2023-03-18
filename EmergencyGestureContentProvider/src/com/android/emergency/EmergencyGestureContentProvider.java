@@ -18,6 +18,7 @@ package com.android.emergency;
 
 
 import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.EMERGENCY_GESTURE_CALL_NUMBER;
+import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.EMERGENCY_GESTURE_UI_SHOWING_VALUE;
 import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.EMERGENCY_NUMBER_OVERRIDE_AUTHORITY;
 import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.EMERGENCY_SETTING_OFF;
 import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.EMERGENCY_SETTING_ON;
@@ -26,6 +27,7 @@ import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.METHO
 import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.METHOD_NAME_GET_EMERGENCY_GESTURE_SOUND_ENABLED;
 import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.METHOD_NAME_GET_EMERGENCY_NUMBER_OVERRIDE;
 import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.METHOD_NAME_SET_EMERGENCY_GESTURE;
+import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.METHOD_NAME_SET_EMERGENCY_GESTURE_UI_SHOWING;
 import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.METHOD_NAME_SET_EMERGENCY_NUMBER_OVERRIDE;
 import static com.android.settingslib.emergencynumber.EmergencyNumberUtils.METHOD_NAME_SET_EMERGENCY_SOUND;
 
@@ -37,6 +39,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.provider.Settings;
 import android.util.Log;
 
@@ -79,6 +82,20 @@ public class EmergencyGestureContentProvider extends ContentProvider {
                 final int gestureSettingValue = extras.getInt(EMERGENCY_SETTING_VALUE);
                 Settings.Secure.putInt(getContext().getContentResolver(),
                         Settings.Secure.EMERGENCY_GESTURE_ENABLED, gestureSettingValue);
+                break;
+            case METHOD_NAME_SET_EMERGENCY_GESTURE_UI_SHOWING:
+                if (DEBUG) {
+                    Log.d(TAG, METHOD_NAME_SET_EMERGENCY_GESTURE_UI_SHOWING);
+                }
+                long now = SystemClock.elapsedRealtime();
+                final int gestureUiShowingValue = extras.getInt(
+                        EMERGENCY_GESTURE_UI_SHOWING_VALUE);
+                Settings.Secure.putInt(getContext().getContentResolver(),
+                        Settings.Secure.EMERGENCY_GESTURE_UI_SHOWING, gestureUiShowingValue);
+                if (gestureUiShowingValue != 0) {
+                    Settings.Secure.putLong(getContext().getContentResolver(),
+                            Settings.Secure.EMERGENCY_GESTURE_UI_LAST_STARTED_MILLIS, now);
+                }
                 break;
             case METHOD_NAME_SET_EMERGENCY_SOUND:
                 if (DEBUG) {
