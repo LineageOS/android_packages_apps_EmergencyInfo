@@ -16,10 +16,10 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="1090682794607161063">"Info til nødsituationer"</string>
+    <string name="app_label" msgid="1090682794607161063">"Nødoplysninger"</string>
     <string name="medical_info_title" msgid="3000192781136934887">"Helbredsoplysninger"</string>
     <string name="add_medical_info" msgid="483921612415907139">"Tilføj oplysninger"</string>
-    <string name="edit_info" msgid="5973929805855224805">"Rediger info til nødsituationer"</string>
+    <string name="edit_info" msgid="5973929805855224805">"Rediger nødoplysninger"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Info"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"Kontakter"</string>
     <string name="name" msgid="4286267457738861977">"Navn"</string>
@@ -87,7 +87,7 @@
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
-    <string name="emergency_contacts_title" msgid="5462202017417821030">"Kontaktpersoner ved nødsituationer"</string>
+    <string name="emergency_contacts_title" msgid="5462202017417821030">"Nødkontakter"</string>
     <string name="add_emergency_contact" msgid="4063577069613981029">"Tilføj kontakt"</string>
     <string name="fail_load_contact_picker" msgid="817205483833876726">"Der blev ikke fundet en kontaktpersonvælger"</string>
     <string name="fail_display_contact" msgid="4128854688897045879">"Kontaktpersonen kan ikke vises"</string>
@@ -104,7 +104,7 @@
     <string name="clear" msgid="3648880442502887163">"Ryd"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Vil du rydde alle oplysninger og kontakter?"</string>
     <string name="emergency_info_footer" msgid="8751758742506410146">"Hvis du tilføjer helbredsoplysninger og kontakter til brug i nødsituationer, kan det hjælpe førstehjælpsydere i en nødsituation.\n\nAlle kan få adgang til disse oplysninger på din låseskærm og ringe til dine kontakter ved at trykke på deres navne uden at låse telefonen op."</string>
-    <string name="settings_suggestion_title" msgid="2503369576806243476">"Tilføj info til nødsituationer"</string>
+    <string name="settings_suggestion_title" msgid="2503369576806243476">"Tilføj nødoplysninger"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"Lad førstehjælpsydere se dine oplysninger"</string>
     <string name="user_image_take_photo" msgid="2779924488370750102">"Tag et billede"</string>
     <string name="user_image_choose_photo" msgid="2442095378052415700">"Vælg et billede"</string>
