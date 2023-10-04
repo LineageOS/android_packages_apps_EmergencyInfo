@@ -24,7 +24,7 @@ import android.provider.Settings;
 import android.util.Log;
 
 import com.android.emergency.action.EmergencyActionUtils;
-import com.android.emergency.R;
+import com.android.emergency.action.R;
 
 
 public class EmergencyActionAlarmHelper {
