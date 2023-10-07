@@ -23,7 +23,7 @@ android_test {
         "androidx.test.rules",
         "emergencyinfo-test-common",
         "androidx.test.espresso.core",
-        "truth-prebuilt",
+        "truth",
         "ub-uiautomator",
     ],
     srcs: ["src/**/*.java"],
