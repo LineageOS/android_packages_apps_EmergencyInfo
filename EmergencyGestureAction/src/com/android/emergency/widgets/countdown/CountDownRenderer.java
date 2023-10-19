@@ -26,7 +26,7 @@ import android.graphics.Typeface;
 
 import androidx.annotation.GuardedBy;
 
-import com.android.emergency.R;
+import com.android.emergency.action.R;
 
 import java.time.Duration;
 

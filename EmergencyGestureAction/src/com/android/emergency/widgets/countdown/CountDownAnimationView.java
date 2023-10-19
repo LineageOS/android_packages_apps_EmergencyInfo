@@ -25,7 +25,7 @@ import android.view.SurfaceView;
 
 import androidx.annotation.UiThread;
 
-import com.android.emergency.R;
+import com.android.emergency.action.R;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 
