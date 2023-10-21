@@ -69,7 +69,7 @@ public class EmergencyNamePreference extends CustomDialogPreference {
     }
 
     public EmergencyNamePreference(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.dialogPreferenceStyle);
+        this(context, attrs, androidx.preference.R.attr.dialogPreferenceStyle);
     }
 
     public EmergencyNamePreference(Context context) {

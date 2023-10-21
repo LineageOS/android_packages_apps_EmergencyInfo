@@ -28,7 +28,7 @@ import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 
 import com.android.emergency.action.EmergencyActionUtils;
-import com.android.emergency.R;
+import com.android.emergency.action.R;
 
 /**
  * Activity for handling emergency action.

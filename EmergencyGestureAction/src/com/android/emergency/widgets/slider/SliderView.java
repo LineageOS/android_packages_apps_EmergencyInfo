@@ -24,7 +24,7 @@ import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.android.emergency.R;
+import com.android.emergency.action.R;
 
 /**
  * A slider button. User can slide the thumb/scrim from one end to the other end to activate the

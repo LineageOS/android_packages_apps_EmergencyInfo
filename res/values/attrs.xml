@@ -17,7 +17,7 @@
     <declare-styleable name="EmergencyEditTextPreference">
         <!-- Summary text for the text preference. This is used rather than android:summary to
         avoid indexing the text incorrectly during settings search. -->
-        <attr name="summary" />
+        <attr name="summary" format="string" />
     </declare-styleable>
 
     <declare-styleable name="EmergencyListPreference">
