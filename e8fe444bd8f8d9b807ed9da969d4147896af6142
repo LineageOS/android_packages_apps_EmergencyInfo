@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "647a1583_d7f1297a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 18796
+      },
+      "writtenOn": "2023-11-28T06:35:30Z",
+      "side": 1,
+      "message": "Picked from 21.0, Fixes emergency contact deleted after reboot.",
+      "revId": "e8fe444bd8f8d9b807ed9da969d4147896af6142",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
