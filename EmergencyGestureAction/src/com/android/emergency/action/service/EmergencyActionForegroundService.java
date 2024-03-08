@@ -35,7 +35,7 @@ import android.telecom.TelecomManager;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import com.android.emergency.R;
+import com.android.emergency.action.R;
 import com.android.emergency.action.broadcast.EmergencyActionBroadcastReceiver;
 import com.android.emergency.action.sensoryfeedback.EmergencyActionAlarmHelper;
 import com.android.settingslib.emergencynumber.EmergencyNumberUtils;

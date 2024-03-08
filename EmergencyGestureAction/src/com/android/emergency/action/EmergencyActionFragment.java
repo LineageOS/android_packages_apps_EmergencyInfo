@@ -33,7 +33,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.android.emergency.R;
 import com.android.emergency.action.broadcast.EmergencyActionBroadcastReceiver;
 import com.android.emergency.action.sensoryfeedback.EmergencyActionAlarmHelper;
 import com.android.emergency.action.service.EmergencyActionForegroundService;
