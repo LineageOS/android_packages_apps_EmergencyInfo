@@ -25,6 +25,9 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import androidx.annotation.LayoutRes;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import android.os.UserHandle;
 import android.os.UserManager;
 import com.google.android.material.tabs.TabLayout;
@@ -88,6 +91,15 @@ public class ViewInfoActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ViewCompat.setOnApplyWindowInsetsListener(this.findViewById(android.R.id.content),
+        (v, windowInsets) -> {
+            Insets insets = windowInsets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.ime());
+            v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
+
         setContentView(R.layout.view_activity_layout);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mPersonalCard = (LinearLayout) findViewById(R.id.name_and_dob_linear_layout);
