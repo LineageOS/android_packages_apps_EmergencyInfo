@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +38,7 @@ import android.view.MenuItem;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.overlay.FeatureFactory;
+import com.android.emergency.util.InsetUtils;
 import com.android.emergency.util.PreferenceUtils;
 import com.android.emergency.view.ViewInfoActivity;
 import com.android.internal.annotations.VisibleForTesting;
@@ -56,6 +58,9 @@ public class EditInfoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        InsetUtils.applyWindowInsetsListener(findViewById(android.R.id.content));
+
         // Protect against b/28401242 by enabling ViewInfoActivity.
         // We used to have code that disabled/enabled it and it could have been left in disabled
         // state.

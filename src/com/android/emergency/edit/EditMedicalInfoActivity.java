@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +20,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 
+import com.android.emergency.util.InsetUtils;
 import com.android.internal.annotations.VisibleForTesting;
 
 /** Activity for editing medical information. */
@@ -28,6 +30,9 @@ public class EditMedicalInfoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        InsetUtils.applyWindowInsetsListener(findViewById(android.R.id.content));
+
         // We only add a new EditInfoFragment if no fragment is restored.
         Fragment fragment = getFragmentManager().findFragmentById(android.R.id.content);
         if (fragment == null) {

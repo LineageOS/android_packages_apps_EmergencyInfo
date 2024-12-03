@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +28,8 @@ import android.os.Bundle;
 import androidx.annotation.LayoutRes;
 import android.os.UserHandle;
 import android.os.UserManager;
+
+import com.android.emergency.util.InsetUtils;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener;
 import com.google.android.material.tabs.TabLayout.ViewPagerOnTabSelectedListener;
@@ -88,6 +91,9 @@ public class ViewInfoActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        InsetUtils.applyWindowInsetsListener(findViewById(android.R.id.content));
+
         setContentView(R.layout.view_activity_layout);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mPersonalCard = (LinearLayout) findViewById(R.id.name_and_dob_linear_layout);
