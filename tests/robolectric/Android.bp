@@ -23,6 +23,5 @@ android_robolectric_test {
     java_resource_dirs: ["config"],
     static_libs: ["emergencyinfo-test-common"],
     instrumentation_for: "EmergencyInfo",
-    upstream: true,
     strict_mode: false,
 }
