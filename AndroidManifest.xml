@@ -50,6 +50,7 @@
          android:label="@string/app_label"
          android:supportsRtl="true"
          android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+         android:enableOnBackInvokedCallback="false"
          tools:replace="android:appComponentFactory">
         <activity android:name=".view.ViewInfoActivity"
              android:theme="@style/AppThemeEmergency"
