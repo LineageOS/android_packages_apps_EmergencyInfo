@@ -1,9 +1,7 @@
-# Default code reviewers picked from top 3 or more developers.
-# Please update this list if you find better candidates.
+# Listed in order of preference, but all are equally responsible.
+jpdsmith@google.com
 peet@google.com
-lindatseng@google.com
-mfritze@google.com
-zhfan@google.com
+aadambek@google.com
 
 #GestureLauncherService
 joselima@google.com
