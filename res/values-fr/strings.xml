@@ -32,7 +32,7 @@
     <string name="age" msgid="8327537794752630199">"Âge : <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
     <string name="remove_dob_icon_text" msgid="4413507180967999944">"Supprimer la date de naissance"</string>
     <string name="blood_type" msgid="6947022772999974608">"Groupe sanguin"</string>
-    <string name="unknown_blood_type" msgid="6337228278125085668">"Inconnu"</string>
+    <string name="unknown_blood_type" msgid="6337228278125085668">"Inconnue"</string>
     <string name="oplus" msgid="7759756742377867011">"O+"</string>
     <string name="ominus" msgid="5227278501191741055">"O-"</string>
     <string name="aplus" msgid="4982472245421753463">"A+"</string>
