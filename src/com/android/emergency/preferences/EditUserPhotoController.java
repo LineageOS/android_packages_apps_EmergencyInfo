@@ -270,7 +270,7 @@ public class EditUserPhotoController {
         if (startSystemActivityForResult(intent, REQUEST_CODE_CROP_PHOTO)) {
             return;
         }
-        onPhotoCropped(mTakePictureUri, false);
+        onPhotoCropped(pictureUri, false);
     }
 
     private boolean startSystemActivityForResult(Intent intent, int code) {
